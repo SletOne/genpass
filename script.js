@@ -254,11 +254,11 @@ function attachEventListeners() {
  */
 function updateOptionsPanel(mode) {
   if (mode === "memorable") {
-    randomOptions.style.display = "none";
-    memorableOptions.style.display = "flex";
+    randomOptions.classList.add("hidden");
+    memorableOptions.classList.remove("hidden");
   } else {
-    randomOptions.style.display = "flex";
-    memorableOptions.style.display = "none";
+    randomOptions.classList.remove("hidden");
+    memorableOptions.classList.add("hidden");
   }
 }
 
@@ -646,13 +646,13 @@ function generatePassword() {
       password = result.password;
       lastCitationUsed = result.quote;
       // Afficher l'indice de citation
-      citationHint.style.display = "flex";
+      citationHint.classList.remove("hidden");
       citationText.textContent = "\u00ab " + result.quote.text + " \u00bb";
       citationAuthor.textContent = "\u2014 " + result.quote.author;
     } else {
       password = generateMemorablePassword();
       lastCitationUsed = null;
-      citationHint.style.display = "none";
+      citationHint.classList.add("hidden");
     }
   } else {
     password = generateRandomPassword(
@@ -662,7 +662,7 @@ function generatePassword() {
       passwordSettings.symbols,
     );
     lastCitationUsed = null;
-    citationHint.style.display = "none";
+    citationHint.classList.add("hidden");
   }
 
   generatedPassword.textContent = password;

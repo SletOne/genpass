@@ -26,7 +26,7 @@
     <meta name="twitter:image" content="https://genpass.fr/assets/og-image.png">
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
+        content="default-src 'none'; script-src 'self' 'sha256-c8ZbTh1ll/jKJwNKRi1Dlnjbj0ZTJtabioBF6dgp3fQ='; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1E293B">
@@ -143,7 +143,7 @@
                 </div>
 
                 <!-- Checkboxes : Mode Mémorable -->
-                <div class="checkbox-group" id="memorableOptions" style="display: none;">
+                <div class="checkbox-group hidden" id="memorableOptions">
                     <!-- Sous-toggle : Mots aléatoires / Phrase connue -->
                     <div class="mem-mode-group" role="group" aria-label="Mode mémorable">
                         <button class="mem-mode-btn active" data-memmode="words" aria-pressed="true">Mots
@@ -214,7 +214,7 @@
                 </div>
 
                 <!-- Indice citation : phrase source pour mémorisation -->
-                <div class="citation-hint" id="citationHint" style="display: none;">
+                <div class="citation-hint hidden" id="citationHint">
                     <i class="ti ti-bulb citation-hint-icon"></i>
                     <span class="citation-hint-text">
                         <span id="citationText"></span>

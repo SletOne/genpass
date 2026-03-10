@@ -91,6 +91,11 @@
     color: #92400E;
 }
 
+/* Classe utilitaire : masquer un élément sans inline style (compatible CSP) */
+.hidden {
+    display: none !important;
+}
+
 /* Focus visible : anneau de focus uniquement pour la navigation clavier (pas au clic souris) */
 /* Conforme WCAG 2.1 critère 2.4.7 - Focus Visible */
 :focus-visible {
