@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://genpass.fr/sitemap.xml

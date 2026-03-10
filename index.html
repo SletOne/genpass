@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenPass — Générateur de mots de passe sécurisé</title>
+    <meta name="description"
+        content="Générez des mots de passe forts et uniques directement dans votre navigateur. 100 % local, zéro collecte de données. Open source.">
+    <!-- Open Graph (partage réseaux sociaux) -->
+    <meta property="og:title" content="GenPass — Générateur de mots de passe sécurisé">
+    <meta property="og:description"
+        content="Générez des mots de passe forts et uniques. 100 % local, zéro collecte de données.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sletone.github.io/genpass/">
+    <meta property="og:image" content="https://sletone.github.io/genpass/screenshot.png">
+    <!-- Styles : Tabler Icons en local (pas de dépendance CDN externe) -->
+    <link rel="stylesheet" href="tabler-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-brand">
+                <img src="assets/logo.svg" class="brand-logo" alt="GenPass">
+                <span class="brand-name">GenPass</span>
+            </div>
+            <p class="header-tagline">Générez des mots de passe forts — 100&nbsp;% local, zéro collecte de données</p>
+            <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                <i class="ti ti-moon theme-icon moon-icon"></i>
+                <i class="ti ti-sun theme-icon sun-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="site-main">
+        <div class="container">
+            <!-- Left Panel: Generator Settings -->
+            <div class="card settings-card">
+                <h1 class="heading-primary">Générateur de mots de passe</h1>
+                <p class="text-secondary">Générez des mots de passe forts et uniques</p>
+
+                <!-- Toggle Buttons -->
+                <div class="toggle-group" role="group" aria-label="Mode de génération">
+                    <button class="toggle-btn active" data-type="random" aria-pressed="true">Random</button>
+                    <button class="toggle-btn" data-type="memorable" aria-pressed="false">Mémorable</button>
+                </div>
+
+                <!-- Length Slider -->
+                <div class="slider-container">
+                    <label class="slider-label" for="lengthSlider">
+                        <span id="lengthValue">16</span> <span id="lengthUnit">caractères</span>
+                    </label>
+                    <input type="range" id="lengthSlider" class="slider" min="8" max="32" value="16"
+                        aria-label="Longueur du mot de passe" aria-valuemin="8" aria-valuemax="32" aria-valuenow="16"
+                        aria-valuetext="16 caractères">
+                </div>
+
+                <!-- Checkboxes : Mode Random -->
+                <div class="checkbox-group" id="randomOptions">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="uppercaseCheck" checked>
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Lettres majuscules</span>
+                        <span class="checkbox-example">ABC</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="numbersCheck" checked>
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Chiffres</span>
+                        <span class="checkbox-example">123</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="symbolsCheck" checked>
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Symboles</span>
+                        <span class="checkbox-example">!&*</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="ambiguousCheck">
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Exclure les caractères ambigus</span>
+                        <span class="checkbox-example">0Ol1</span>
+                    </label>
+                </div>
+
+                <!-- Checkboxes : Mode Mémorable -->
+                <div class="checkbox-group" id="memorableOptions" style="display: none;">
+                    <!-- Sous-toggle : Mots aléatoires / Phrase connue -->
+                    <div class="mem-mode-group" role="group" aria-label="Mode mémorable">
+                        <button class="mem-mode-btn active" data-memmode="words" aria-pressed="true">Mots
+                            aléatoires</button>
+                        <button class="mem-mode-btn" data-memmode="citation" aria-pressed="false">Phrase connue</button>
+                    </div>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="memUppercaseCheck" checked>
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Lettres majuscules</span>
+                        <span class="checkbox-example">Mot</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="memNumbersCheck" checked>
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Chiffres aux mots</span>
+                        <span class="checkbox-example">Mot3</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="memSymbolsInWordsCheck">
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Symboles dans les mots</span>
+                        <span class="checkbox-example">M!ot</span>
+                    </label>
+
+                    <div class="separator-option">
+                        <label class="separator-label" for="separatorSelect">Séparateur</label>
+                        <select id="separatorSelect" class="separator-select">
+                            <option value="-" selected>Tiret ( - )</option>
+                            <option value=".">Point ( . )</option>
+                            <option value=" ">Espace</option>
+                            <option value="random">Aléatoire</option>
+                            <option value="">Aucun</option>
+                        </select>
+                    </div>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="memAmbiguousCheck">
+                        <span class="checkbox-custom">
+                            <i class="ti ti-check check-icon"></i>
+                        </span>
+                        <span class="checkbox-label">Exclure les caractères ambigus</span>
+                        <span class="checkbox-example">0Ol1</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Center Panel: Password Display -->
+            <div class="card password-card">
+                <div class="password-display-container">
+                    <div class="password-display" id="passwordDisplay">
+                        <!-- Contenu généré par script.js — aria-live annonce les mises à jour aux lecteurs d'écran -->
+                        <span class="password-text" id="generatedPassword" aria-live="polite"
+                            aria-label="Mot de passe généré"></span>
+                    </div>
+                    <button class="btn-icon copy-btn" id="copyBtn" title="Copier">
+                        <i class="ti ti-copy icon"></i>
+                        <span>Copier</span>
+                    </button>
+                </div>
+
+                <!-- Indice citation : phrase source pour mémorisation -->
+                <div class="citation-hint" id="citationHint" style="display: none;">
+                    <i class="ti ti-bulb citation-hint-icon"></i>
+                    <span class="citation-hint-text">
+                        <span id="citationText"></span>
+                        <span class="citation-author" id="citationAuthor"></span>
+                    </span>
+                </div>
+
+                <button class="btn-primary" id="generateBtn">
+                    <i class="ti ti-refresh icon"></i>
+                    Générer à nouveau
+                </button>
+
+                <!-- Other Passwords List -->
+                <div class="other-passwords">
+                    <h2 class="heading-secondary">Autres suggestions</h2>
+                    <!-- Les suggestions sont générées dynamiquement par script.js -->
+                    <div class="password-list" id="passwordList"></div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Security Info -->
+            <div class="card security-card">
+                <h2 class="heading-secondary">Niveau de sécurité</h2>
+
+                <!-- Indicateur visuel — badge de niveau de force -->
+                <div class="security-visual" role="status" aria-live="polite">
+                    <span class="security-strength-label" id="strengthLabel">fort</span>
+                </div>
+
+                <p class="security-info">
+                    <strong id="crackTime">des milliards d'années</strong> pour pirater ce mot de passe
+                </p>
+                <p class="security-disclaimer">
+                    Estimation basée sur une attaque par force brute à 10 milliards d'essais/s. Ce temps peut varier
+                    selon la puissance des machines, les méthodes des attaquants et les avancées technologiques. Calcul
+                    hors informatique quantique.
+                </p>
+
+                <!-- App Info -->
+                <div class="app-info">
+                    <div class="privacy-section">
+                        <img src="assets/favicon.svg" alt="" class="privacy-icon" aria-hidden="true">
+                        <h3 class="heading-tertiary">Privacy by default</h3>
+                        <p class="text-small">
+                            GenPass est <a href="https://github.com/SletOne/genpass" target="_blank"
+                                rel="noopener noreferrer" class="link">open source</a>. Aucune donnée ne quitte votre
+                            navigateur.
+                        </p>
+                    </div>
+
+                    <!-- CTA Proton Pass — second point de contact, contexte "sécurité/privacy" -->
+                    <a href="https://pr.tn/ref/JD3S8DQ5" target="_blank" rel="noopener noreferrer sponsored"
+                        class="proton-cta">
+                        Protégez-vous avec Proton
+                        <img src="assets/Proton_tagline.svg" alt="Proton" class="proton-cta-logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Guide Section -->
+        <section class="security-guide">
+            <h2 class="guide-title">Comprendre la sécurité des mots de passe</h2>
+
+            <!-- Bloc A: Les 3 piliers -->
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <i class="ti ti-ruler-2 pillar-icon"></i>
+                    <h3>Longueur</h3>
+                    <p>Minimum 12 caractères, idéalement 15 ou plus. Chaque caractère supplémentaire multiplie
+                        exponentiellement le temps de piratage.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="ti ti-shuffle pillar-icon"></i>
+                    <h3>Aléatoire</h3>
+                    <p>Mélange imprévisible de majuscules, minuscules, chiffres et symboles. Évitez les mots courants,
+                        même avec des substitutions.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="ti ti-lock pillar-icon"></i>
+                    <h3>Unique</h3>
+                    <p>Un mot de passe différent pour chaque compte. Si un site est compromis, vos autres comptes
+                        restent protégés.</p>
+                </div>
+            </div>
+
+            <!-- Bloc B: Méthodes d'attaque -->
+            <div class="attacks-section">
+                <h3 class="section-subtitle">Comment les hackers s'y prennent</h3>
+                <div class="attacks-grid">
+                    <div class="attack-card">
+                        <div class="attack-header">
+                            <i class="ti ti-cpu attack-icon"></i>
+                            <span>Attaque brute force</span>
+                        </div>
+                        <p>Un ordinateur puissant teste des milliards de combinaisons par seconde. Les mots de passe
+                            courts (moins de 12 caractères) tombent en quelques minutes.</p>
+                    </div>
+                    <div class="attack-card">
+                        <div class="attack-header">
+                            <i class="ti ti-book attack-icon"></i>
+                            <span>Attaque par dictionnaire</span>
+                        </div>
+                        <p>Les hackers exploitent les mots courants et leurs variantes prévisibles. « Ch@ll3ng3r » reste
+                            vulnérable — seul l'aléatoire total protège vraiment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc C & D côte à côte -->
+            <div class="guide-bottom-grid">
+                <!-- Bonnes pratiques -->
+                <div class="practices-section">
+                    <h3 class="section-subtitle">Bonnes pratiques</h3>
+                    <ul class="practices-list">
+                        <li class="practice-item">
+                            <i class="ti ti-device-floppy practice-icon"></i>
+                            <span>Utilisez un gestionnaire de mots de passe chiffré de bout en bout</span>
+                        </li>
+                        <li class="practice-item">
+                            <i class="ti ti-device-mobile practice-icon"></i>
+                            <span>Activez la double authentification (2FA) sur vos comptes sensibles</span>
+                        </li>
+                        <li class="practice-item">
+                            <i class="ti ti-arrows-shuffle practice-icon"></i>
+                            <span>Ne réutilisez jamais le même mot de passe sur deux services</span>
+                        </li>
+                        <li class="practice-item">
+                            <i class="ti ti-eye-off practice-icon"></i>
+                            <span>Ne notez jamais vos mots de passe en clair</span>
+                        </li>
+                    </ul>
+
+                    <!-- Recommandation gestionnaire de mots de passe -->
+                    <!-- rel="sponsored" : balise SEO requise pour les liens d'affiliation/parrainage -->
+                    <div class="proton-rec">
+                        <div class="proton-rec-header">
+                            <i class="ti ti-shield-lock proton-rec-icon"></i>
+                            <span class="proton-rec-label">Gestionnaire recommandé</span>
+                            <img src="assets/Proton_tagline.svg" alt="Proton" class="proton-rec-logo">
+                        </div>
+                        <p class="proton-rec-text">
+                            <strong>Proton</strong> — open source, chiffré de bout en bout, zéro pub, zéro collecte.
+                            Via ce lien de parrainage : <strong>2 semaines gratuites</strong> + <strong>US$20 de
+                                crédit</strong> sur votre prochaine facture.
+                        </p>
+                        <a href="https://pr.tn/ref/JD3S8DQ5" target="_blank" rel="noopener noreferrer sponsored"
+                            class="proton-rec-link">
+                            Essayer Proton <i class="ti ti-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FAQ accordion -->
+                <div class="faq-section">
+                    <h3 class="section-subtitle">Questions fréquentes</h3>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>Quel est le mot de passe le plus fort possible ?</span>
+                                <i class="ti ti-chevron-down faq-chevron"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>12 caractères minimum, mélange aléatoire de majuscules, minuscules, chiffres et
+                                    symboles. Ces mots de passe étant difficiles à mémoriser, utilisez un gestionnaire
+                                    pour les stocker de façon chiffrée.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>Quels sont les 3 éléments clés d'un bon mot de passe ?</span>
+                                <i class="ti ti-chevron-down faq-chevron"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Longueur (16 caractères minimum), caractère aléatoire total (pas de mots courants ni
+                                    de substitutions simples), et unicité — un mot de passe différent par service.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>GenPass stocke-t-il mes mots de passe ?</span>
+                                <i class="ti ti-chevron-down faq-chevron"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Non. GenPass génère vos mots de passe entièrement dans votre navigateur. Aucune
+                                    donnée n'est transmise ni stockée sur un serveur. Pour conserver vos mots de passe,
+                                    utilisez un gestionnaire chiffré de confiance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-copy">© 2026 GenPass · Créé par PocketBinary</p>
+            <div class="footer-links">
+                <a href="https://github.com/SletOne/genpass" target="_blank" rel="noopener noreferrer"
+                    class="footer-link">
+                    <i class="ti ti-brand-github"></i>
+                    Open source
+                </a>
+                <span class="footer-sep">·</span>
+                <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+                    <i class="ti ti-shield-check"></i>
+                    Vérifier mes identifiants
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+        <i class="ti ti-arrow-up"></i>
+    </button>
+
+    <!-- data.js doit être chargé en premier : CONFIG et WORDS_FR utilisés par script.js -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
