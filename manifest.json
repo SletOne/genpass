@@ -1,0 +1,19 @@
+{
+  "name": "GenPass — Générateur de mots de passe sécurisé",
+  "short_name": "GenPass",
+  "description": "Générez des mots de passe forts et uniques. 100 % local, zéro collecte de données.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#1E293B",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["security", "utilities"]
+}

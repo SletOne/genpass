@@ -96,8 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
   generatePassword(); // Générer le mot de passe principal
   generateOtherPasswords(); // Générer les 5 suggestions
   attachEventListeners(); // Brancher tous les événements UI
+  initKeyboardShortcuts(); // Raccourcis clavier
   initFaq(); // Initialiser l'accordéon FAQ
   initScrollTop(); // Initialiser le bouton retour en haut
+  registerServiceWorker(); // PWA : mode hors ligne
 });
 
 /* ===== Gestion des événements ===== */
@@ -1046,4 +1048,36 @@ function initFaq() {
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   });
+}
+
+/* ===== Raccourcis clavier ===== */
+
+/**
+ * Initialise les raccourcis clavier globaux.
+ * - Entrée : régénérer le mot de passe (sauf si focus dans un champ)
+ * - Ctrl+C / Cmd+C : copier le mot de passe affiché (quand aucun texte n'est sélectionné)
+ */
+function initKeyboardShortcuts() {
+  document.addEventListener("keydown", (e) => {
+    // Ignorer si le focus est dans un champ de saisie ou un select
+    const tag = document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      generatePassword();
+      generateOtherPasswords();
+    }
+  });
+}
+
+/* ===== Service Worker (PWA) ===== */
+
+/**
+ * Enregistre le Service Worker pour permettre le fonctionnement hors ligne.
+ */
+function registerServiceWorker() {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
 }

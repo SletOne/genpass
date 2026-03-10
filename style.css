@@ -82,6 +82,15 @@
     box-sizing: border-box;
 }
 
+/* Noscript fallback */
+.noscript-warning {
+    text-align: center;
+    padding: 2rem;
+    font-family: sans-serif;
+    background: #FEF3C7;
+    color: #92400E;
+}
+
 /* Focus visible : anneau de focus uniquement pour la navigation clavier (pas au clic souris) */
 /* Conforme WCAG 2.1 critère 2.4.7 - Focus Visible */
 :focus-visible {

@@ -7,20 +7,62 @@
     <title>GenPass — Générateur de mots de passe sécurisé</title>
     <meta name="description"
         content="Générez des mots de passe forts et uniques directement dans votre navigateur. 100 % local, zéro collecte de données. Open source.">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://genpass.fr/">
     <!-- Open Graph (partage réseaux sociaux) -->
     <meta property="og:title" content="GenPass — Générateur de mots de passe sécurisé">
     <meta property="og:description"
         content="Générez des mots de passe forts et uniques. 100 % local, zéro collecte de données.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sletone.github.io/genpass/">
-    <meta property="og:image" content="https://sletone.github.io/genpass/screenshot.png">
+    <meta property="og:url" content="https://genpass.fr/">
+    <meta property="og:image" content="https://genpass.fr/assets/og-image.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="GenPass">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GenPass — Générateur de mots de passe sécurisé">
+    <meta name="twitter:description"
+        content="Générez des mots de passe forts et uniques. 100 % local, zéro collecte de données.">
+    <meta name="twitter:image" content="https://genpass.fr/assets/og-image.png">
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1E293B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "GenPass",
+        "url": "https://genpass.fr/",
+        "description": "Générateur de mots de passe sécurisé. 100 % local, zéro collecte de données.",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "browserRequirements": "Requires JavaScript. Requires Web Crypto API.",
+        "inLanguage": "fr"
+    }
+    </script>
     <!-- Styles : Tabler Icons en local (pas de dépendance CDN externe) -->
     <link rel="stylesheet" href="tabler-icons.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
 </head>
 
 <body>
+
+    <!-- Fallback si JavaScript est désactivé -->
+    <noscript>
+        <div class="noscript-warning">
+            <strong>JavaScript est requis</strong> pour générer des mots de passe. Veuillez l'activer dans votre
+            navigateur.
+        </div>
+    </noscript>
 
     <!-- Header -->
     <header class="site-header">
@@ -392,8 +434,8 @@
     </button>
 
     <!-- data.js doit être chargé en premier : CONFIG et WORDS_FR utilisés par script.js -->
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+    <script src="data.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
