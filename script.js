@@ -4,6 +4,8 @@
  * Aucune donnée ne quitte le navigateur.
  */
 
+import { CONFIG, WORDS_FR, QUOTES_FR } from "./data.js";
+
 /* ===== Sécurité : protection XSS ===== */
 
 /**
@@ -12,7 +14,7 @@
  * @param {string} str - Chaîne brute à sécuriser
  * @returns {string} Chaîne avec entités HTML encodées
  */
-function escapeHtml(str) {
+export function escapeHtml(str) {
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -21,14 +23,10 @@ function escapeHtml(str) {
     .replace(/'/g, "&#039;");
 }
 
-/* ===== Configuration des jeux de caractères ===== */
-
-// CONFIG et WORDS_FR sont définis dans data.js, chargé avant ce fichier.
-
 /* ===== État de l'application ===== */
 
 /** Paramètres courants de génération (mis à jour par les contrôles UI) */
-let passwordSettings = {
+export let passwordSettings = {
   length: 16,
   uppercase: true,
   numbers: true,
@@ -45,41 +43,33 @@ let passwordSettings = {
 };
 
 /* ===== Références aux éléments du DOM ===== */
+/* Initialisées dans le bloc DOMContentLoaded pour compatibilité modules ES */
 
-const lengthSlider = document.getElementById("lengthSlider");
-const lengthValue = document.getElementById("lengthValue");
-const lengthUnit = document.getElementById("lengthUnit");
-const uppercaseCheck = document.getElementById("uppercaseCheck");
-const numbersCheck = document.getElementById("numbersCheck");
-const symbolsCheck = document.getElementById("symbolsCheck");
-const ambiguousCheck = document.getElementById("ambiguousCheck");
-const generatedPassword = document.getElementById("generatedPassword");
-const generateBtn = document.getElementById("generateBtn");
-const copyBtn = document.getElementById("copyBtn");
-const toggleBtns = document.querySelectorAll(".toggle-btn");
-const passwordList = document.getElementById("passwordList");
-const strengthLabel = document.getElementById("strengthLabel");
-const crackTimeEl = document.getElementById("crackTime");
-const themeToggle = document.getElementById("themeToggle");
+let lengthSlider,
+  lengthValue,
+  lengthUnit,
+  uppercaseCheck,
+  numbersCheck,
+  symbolsCheck,
+  ambiguousCheck,
+  generatedPassword,
+  generateBtn,
+  copyBtn,
+  toggleBtns,
+  passwordList,
+  strengthLabel,
+  crackTimeEl,
+  themeToggle;
 
-// Panneaux d'options spécifiques au mode
-const randomOptions = document.getElementById("randomOptions");
-const memorableOptions = document.getElementById("memorableOptions");
+let randomOptions, memorableOptions;
 
-// Contrôles mode mémorable
-const memUppercaseCheck = document.getElementById("memUppercaseCheck");
-const memNumbersCheck = document.getElementById("memNumbersCheck");
-const memSymbolsInWordsCheck = document.getElementById(
-  "memSymbolsInWordsCheck",
-);
-const separatorSelect = document.getElementById("separatorSelect");
-const memAmbiguousCheck = document.getElementById("memAmbiguousCheck");
+let memUppercaseCheck,
+  memNumbersCheck,
+  memSymbolsInWordsCheck,
+  separatorSelect,
+  memAmbiguousCheck;
 
-// Contrôles mode citation
-const memModeBtns = document.querySelectorAll(".mem-mode-btn");
-const citationHint = document.getElementById("citationHint");
-const citationText = document.getElementById("citationText");
-const citationAuthor = document.getElementById("citationAuthor");
+let memModeBtns, citationHint, citationText, citationAuthor;
 
 /** Dernière citation utilisée (pour l'affichage de l'indice) */
 let lastCitationUsed = null;
@@ -92,6 +82,34 @@ let lastCitationUsed = null;
  * que le DOM est complètement chargé avant toute manipulation.
  */
 document.addEventListener("DOMContentLoaded", () => {
+  // Résoudre les références DOM
+  lengthSlider = document.getElementById("lengthSlider");
+  lengthValue = document.getElementById("lengthValue");
+  lengthUnit = document.getElementById("lengthUnit");
+  uppercaseCheck = document.getElementById("uppercaseCheck");
+  numbersCheck = document.getElementById("numbersCheck");
+  symbolsCheck = document.getElementById("symbolsCheck");
+  ambiguousCheck = document.getElementById("ambiguousCheck");
+  generatedPassword = document.getElementById("generatedPassword");
+  generateBtn = document.getElementById("generateBtn");
+  copyBtn = document.getElementById("copyBtn");
+  toggleBtns = document.querySelectorAll(".toggle-btn");
+  passwordList = document.getElementById("passwordList");
+  strengthLabel = document.getElementById("strengthLabel");
+  crackTimeEl = document.getElementById("crackTime");
+  themeToggle = document.getElementById("themeToggle");
+  randomOptions = document.getElementById("randomOptions");
+  memorableOptions = document.getElementById("memorableOptions");
+  memUppercaseCheck = document.getElementById("memUppercaseCheck");
+  memNumbersCheck = document.getElementById("memNumbersCheck");
+  memSymbolsInWordsCheck = document.getElementById("memSymbolsInWordsCheck");
+  separatorSelect = document.getElementById("separatorSelect");
+  memAmbiguousCheck = document.getElementById("memAmbiguousCheck");
+  memModeBtns = document.querySelectorAll(".mem-mode-btn");
+  citationHint = document.getElementById("citationHint");
+  citationText = document.getElementById("citationText");
+  citationAuthor = document.getElementById("citationAuthor");
+
   initTheme(); // Restaurer le thème sauvegardé (ou clair par défaut)
   generatePassword(); // Générer le mot de passe principal
   generateOtherPasswords(); // Générer les 5 suggestions
@@ -301,7 +319,12 @@ function updateSliderForMode(mode) {
  * @param {boolean} useSymbols   - Inclure les symboles
  * @returns {string} Mot de passe généré
  */
-function generateRandomPassword(length, useUppercase, useNumbers, useSymbols) {
+export function generateRandomPassword(
+  length,
+  useUppercase,
+  useNumbers,
+  useSymbols,
+) {
   // Construire le jeu de caractères selon les options actives
   let charset = CONFIG.lowercase; // Minuscules toujours incluses
 
@@ -349,7 +372,7 @@ function generateRandomPassword(length, useUppercase, useNumbers, useSymbols) {
  *
  * @returns {string} Phrase secrète séparée par des tirets
  */
-function generateMemorablePassword() {
+export function generateMemorablePassword() {
   // En mode mémorable, le slider contrôle directement le nombre de mots (3–8)
   const numWords = passwordSettings.length;
 
@@ -497,7 +520,7 @@ const STOPWORDS_FR = new Set([
  * @param {string} text - Phrase source
  * @returns {string[]} Mots-clés en minuscules
  */
-function extractKeywords(text) {
+export function extractKeywords(text) {
   return text
     .toLowerCase()
     .replace(/[^a-z\s-]/g, "") // retirer la ponctuation (garder les tirets)
@@ -512,7 +535,7 @@ function extractKeywords(text) {
  * @param {number} maxLen - Longueur maximale (3-5)
  * @returns {string} Mot tronqué
  */
-function truncateWord(word, maxLen) {
+export function truncateWord(word, maxLen) {
   if (word.length <= maxLen) return word;
   return word.slice(0, maxLen);
 }
@@ -716,7 +739,7 @@ function generateOtherPasswords() {
  * @param {number} logSeconds - log10 du nombre de secondes
  * @returns {string} Durée estimée en langage naturel
  */
-function logSecondsToDuration(logSeconds) {
+export function logSecondsToDuration(logSeconds) {
   if (logSeconds < 0) return "moins d'une seconde";
   if (logSeconds < Math.log10(60)) {
     const s = Math.round(10 ** logSeconds);
@@ -907,7 +930,7 @@ function estimateCrackTime(password) {
  * @param {string} password - Mot de passe à évaluer
  * @returns {number} Score entre 0 et 100
  */
-function calculatePasswordStrength(password) {
+export function calculatePasswordStrength(password) {
   if (passwordSettings.type === "memorable") {
     const numWords = passwordSettings.length;
     const entropy =

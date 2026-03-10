@@ -288,7 +288,7 @@
                         exponentiellement le temps de piratage.</p>
                 </div>
                 <div class="pillar-card">
-                    <i class="ti ti-shuffle pillar-icon"></i>
+                    <i class="ti ti-arrows-shuffle pillar-icon"></i>
                     <h3>Aléatoire</h3>
                     <p>Mélange imprévisible de majuscules, minuscules, chiffres et symboles. Évitez les mots courants,
                         même avec des substitutions.</p>
@@ -433,9 +433,8 @@
         <i class="ti ti-arrow-up"></i>
     </button>
 
-    <!-- data.js doit être chargé en premier : CONFIG et WORDS_FR utilisés par script.js -->
-    <script src="data.js" defer></script>
-    <script src="script.js" defer></script>
+    <!-- script.js importe data.js via ES modules -->
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

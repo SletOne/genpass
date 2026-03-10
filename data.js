@@ -14,7 +14,7 @@
  * Jeux de caractères disponibles pour la génération aléatoire.
  * Exposé globalement (window scope) pour être consommé par script.js.
  */
-const CONFIG = {
+export const CONFIG = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   numbers: "0123456789",
@@ -37,7 +37,7 @@ const CONFIG = {
  *
  * Exposé globalement pour être consommé par script.js.
  */
-const WORDS_FR = [
+export const WORDS_FR = [
   /* ------------------------------------------------------------------ */
   /* Nature & Paysages (125 mots)                                        */
   /* ------------------------------------------------------------------ */
@@ -584,7 +584,7 @@ const WORDS_FR = [
  *
  * Chaque entrée : { text: "phrase complète", author: "auteur" }
  */
-const QUOTES_FR = [
+export const QUOTES_FR = [
   /* --- Citations classiques & philosophie --- */
   {
     text: "La beaute est dans les yeux de celui qui regarde",
