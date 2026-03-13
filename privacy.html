@@ -28,6 +28,7 @@
         .privacy-content p {
             margin-bottom: var(--spacing-md);
             color: var(--color-text-secondary);
+            line-height: 1.6;
         }
         .back-link {
             display: inline-flex;
@@ -37,22 +38,25 @@
             color: var(--color-primary);
             text-decoration: none;
             font-weight: var(--font-weight-medium);
+            transition: color 0.2s ease;
         }
         .back-link:hover {
-            text-decoration: underline;
+            color: var(--color-success);
         }
     </style>
 </head>
 <body>
+    <!-- Header identique à index.html -->
     <header class="site-header">
         <div class="header-inner">
-            <div class="header-brand">
+            <a href="index.html" class="header-brand" style="text-decoration: none; color: inherit;">
                 <img src="assets/logo.svg" class="brand-logo" alt="GenPass" width="32" height="32">
                 <span class="brand-name">GenPass</span>
-            </div>
+            </a>
+            <p class="header-tagline">Générez des mots de passe forts — 100&nbsp;% local, zéro collecte de données</p>
             <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
-                <i class="ti ti-moon theme-icon moon-icon"></i>
-                <i class="ti ti-sun theme-icon sun-icon"></i>
+                <i class="ti ti-moon theme-icon moon-icon" aria-hidden="true"></i>
+                <i class="ti ti-sun theme-icon sun-icon" aria-hidden="true"></i>
             </button>
         </div>
     </header>
@@ -61,32 +65,50 @@
         <div class="container" style="display: block;">
             <div class="privacy-content">
                 <a href="index.html" class="back-link">
-                    <i class="ti ti-arrow-left"></i> Retour à l'accueil
+                    <i class="ti ti-arrow-left"></i> Retour au générateur
                 </a>
                 
                 <h1 class="heading-primary">Politique de Confidentialité</h1>
                 
-                <h2 class="heading-secondary">1. Collecte de données</h2>
-                <p>GenPass est conçu selon le principe de "Privacy by Default" (Confidentialité par défaut). Nous ne collectons, ne stockons et ne transmettons aucune donnée personnelle ni aucun mot de passe généré.</p>
+                <h2 class="heading-secondary">1. Transparence et collecte de données</h2>
+                <p>La protection de votre vie privée n'est pas qu'une promesse, c'est l'essence même de l'architecture technique de GenPass. Notre outil est rigoureusement conçu selon le principe de <strong>"Privacy by Design"</strong> et <strong>"Privacy by Default"</strong>. Nous garantissons que nous ne collectons, n'analysons, ne stockons et ne transmettons absolument aucune donnée personnelle. Aucun traceur publicitaire, aucun outil d'analyse d'audience (comme Google Analytics) ni aucun cookie de suivi n'est intégré au code source de cette application.</p>
                 
-                <h2 class="heading-secondary">2. Traitement local</h2>
-                <p>Toute la logique de génération de mots de passe s'exécute localement dans votre navigateur web, grâce à JavaScript. Aucun serveur distant n'est impliqué dans le processus de création de vos mots de passe.</p>
+                <h2 class="heading-secondary">2. Traitement des mots de passe en local</h2>
+                <p>La fonction première de GenPass étant de créer des clés de sécurité, le niveau d'isolation doit être maximal. C'est pourquoi toute la logique de génération cryptographique s'exécute de manière strictement <strong>locale dans votre navigateur web</strong>. Lorsque vous cliquez sur "Générer", aucun serveur distant n'est sollicité, aucune requête réseau contenant vos futurs mots de passe n'est émise. L'outil utilise la <code>Web Crypto API</code> intégrée à votre appareil pour garantir un résultat sûr et privé.</p>
                 
-                <h2 class="heading-secondary">3. Cookies et stockage local</h2>
-                <p>GenPass utilise le stockage local (localStorage) de votre navigateur uniquement pour enregistrer vos préférences d'interface (comme le thème clair ou sombre). Ce stockage ne contient aucune information sensible.</p>
+                <h2 class="heading-secondary">3. Stockage local et préférences (localStorage)</h2>
+                <p>Pour améliorer votre confort d'utilisation sans compromettre votre anonymat, GenPass utilise la fonctionnalité de stockage local (localStorage) de votre navigateur. Ce mécanisme permet de mémoriser exclusivement des <strong>préférences d'interface inoffensives</strong>, telles que votre choix de thème (clair ou sombre) ou vos paramètres de longueur de mot de passe favoris. Ces données de configuration restent confinées sur votre appareil et peuvent être effacées à tout moment via les paramètres de votre navigateur.</p>
 
-                <h2 class="heading-secondary">4. Hébergement</h2>
-                <p>Ce site est hébergé de manière statique. L'hébergeur peut enregistrer des journaux d'accès (logs) standards incluant votre adresse IP à des fins de sécurité et de maintenance, conformément à sa propre politique de confidentialité.</p>
+                <h2 class="heading-secondary">4. Hébergement et infrastructure</h2>
+                <p>Le site GenPass est déployé de manière statique via l'infrastructure GitHub Pages. Dans le cadre du fonctionnement normal d'internet, les serveurs d'hébergement traitent techniquement votre adresse IP pour vous distribuer les fichiers du site (HTML, CSS, JS). Ces journaux d'accès (logs) sont gérés par l'hébergeur à des fins exclusives de sécurité, de maintien en condition opérationnelle et de prévention des attaques par déni de service, conformément à sa propre politique globale.</p>
 
-                <h2 class="heading-secondary">5. Liens externes</h2>
-                <p>Notre site contient des liens vers des services externes (comme Proton Pass ou Have I Been Pwned). Nous ne sommes pas responsables des pratiques de confidentialité de ces sites tiers.</p>
+                <h2 class="heading-secondary">5. Liens vers des services tiers</h2>
+                <p>Afin d'enrichir votre culture de la cybersécurité, notre interface peut proposer des liens sortants vers des services de confiance (par exemple : vérification des fuites de données via <em>Have I Been Pwned</em>, ou recommandations de gestionnaires de mots de passe comme <em>Proton Pass</em>). GenPass n'exerce aucun contrôle sur le contenu ou les pratiques de confidentialité de ces plateformes externes. Nous vous invitons à consulter leurs politiques de confidentialité respectives lorsque vous quittez notre écosystème.</p>
             </div>
         </div>
     </main>
 
+    <!-- Footer identique à index.html -->
     <footer class="site-footer">
         <div class="footer-inner">
             <p class="footer-copy">© 2026 GenPass · Créé par PocketBinary</p>
+            <div class="footer-links">
+                <a href="https://github.com/SletOne/genpass" target="_blank" rel="noopener noreferrer"
+                    class="footer-link">
+                    <i class="ti ti-brand-github"></i>
+                    Open source
+                </a>
+                <span class="footer-sep">·</span>
+                <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+                    <i class="ti ti-shield-check"></i>
+                    Vérifier mes identifiants
+                </a>
+                <span class="footer-sep">·</span>
+                <a href="privacy.html" class="footer-link" aria-current="page">
+                    <i class="ti ti-lock"></i>
+                    Confidentialité
+                </a>
+            </div>
         </div>
     </footer>
 
