@@ -1,5 +1,5 @@
 /* Tabler Icons subset - only icons used by GenPass */
-@font-face{font-family:"tabler-icons";font-style:normal;font-weight:400;src:url("../fonts/tabler-icons.eot?v2.47.0");src:url("../fonts/tabler-icons.eot?#iefix-v2.47.0") format("embedded-opentype"),url("../fonts/tabler-icons.woff2?v2.47.0") format("woff2"),url("../fonts/tabler-icons.woff?") format("woff"),url("../fonts/tabler-icons.ttf?v2.47.0") format("truetype")}
+@font-face{font-family:"tabler-icons";font-style:normal;font-weight:400;src:url("../fonts/tabler-icons.woff2?v2.47.0") format("woff2"),url("../fonts/tabler-icons.woff?v2.47.0") format("woff"),url("../fonts/tabler-icons.ttf?v2.47.0") format("truetype")}
 .ti{font-family:"tabler-icons" !important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .ti-moon:before{content:"\eaf8"}
 .ti-sun:before{content:"\eb30"}
@@ -21,3 +21,4 @@
 .ti-brand-github:before{content:"\ec1c"}
 .ti-shield-check:before{content:"\eb22"}
 .ti-arrow-up:before{content:"\ea25"}
+.ti-arrow-left:before{content:"\ea19"}
