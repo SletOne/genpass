@@ -3,7 +3,7 @@
  * Cache les ressources pour un fonctionnement 100 % hors ligne.
  */
 
-const CACHE_NAME = "genpass-v5";
+const CACHE_NAME = "genpass-v6";
 const ASSETS = [
   "/",
   "/index.html",
@@ -20,6 +20,10 @@ const ASSETS = [
   "/assets/favicon.svg",
   "/assets/logo.svg",
   "/assets/Proton_tagline.svg",
+  "/fonts/tabler-icons.ttf",
+  "/fonts/tabler-icons.woff",
+  "/fonts/tabler-icons.woff2",
+  "/fonts/Pirulen Rg.otf"
 ];
 
 // Installation : pré-cache des fichiers essentiels
