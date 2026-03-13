@@ -52,8 +52,8 @@
     }
     </script>
     <!-- Styles : Tabler Icons en local (pas de dépendance CDN externe) -->
-    <link rel="stylesheet" href="tabler-icons.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/tabler-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="apple-touch-icon" href="assets/favicon.svg">
 </head>
@@ -77,8 +77,8 @@
             </div>
             <p class="header-tagline">Générez des mots de passe forts — 100&nbsp;% local, zéro collecte de données</p>
             <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
-                <i class="ti ti-moon theme-icon moon-icon"></i>
-                <i class="ti ti-sun theme-icon sun-icon"></i>
+                <i class="ti ti-moon theme-icon moon-icon" aria-hidden="true"></i>
+                <i class="ti ti-sun theme-icon sun-icon" aria-hidden="true"></i>
             </button>
         </div>
     </header>
@@ -275,7 +275,7 @@
                         class="proton-cta">
                         Protégez-vous avec Proton
                         <img src="assets/Proton_tagline.svg" alt="Proton" class="proton-cta-logo" width="220"
-                            height="24">
+                            height="24" loading="lazy">
                     </a>
                 </div>
             </div>
@@ -288,19 +288,19 @@
             <!-- Bloc A: Les 3 piliers -->
             <div class="pillars-grid">
                 <div class="pillar-card">
-                    <i class="ti ti-ruler-2 pillar-icon"></i>
+                    <i class="ti ti-ruler-2 pillar-icon" aria-hidden="true"></i>
                     <h3>Longueur</h3>
                     <p>Minimum 12 caractères, idéalement 15 ou plus. Chaque caractère supplémentaire multiplie
                         exponentiellement le temps de piratage.</p>
                 </div>
                 <div class="pillar-card">
-                    <i class="ti ti-arrows-shuffle pillar-icon"></i>
+                    <i class="ti ti-arrows-shuffle pillar-icon" aria-hidden="true"></i>
                     <h3>Aléatoire</h3>
                     <p>Mélange imprévisible de majuscules, minuscules, chiffres et symboles. Évitez les mots courants,
                         même avec des substitutions.</p>
                 </div>
                 <div class="pillar-card">
-                    <i class="ti ti-lock pillar-icon"></i>
+                    <i class="ti ti-lock pillar-icon" aria-hidden="true"></i>
                     <h3>Unique</h3>
                     <p>Un mot de passe différent pour chaque compte. Si un site est compromis, vos autres comptes
                         restent protégés.</p>
@@ -313,7 +313,7 @@
                 <div class="attacks-grid">
                     <div class="attack-card">
                         <div class="attack-header">
-                            <i class="ti ti-cpu attack-icon"></i>
+                            <i class="ti ti-cpu attack-icon" aria-hidden="true"></i>
                             <span>Attaque brute force</span>
                         </div>
                         <p>Un ordinateur puissant teste des milliards de combinaisons par seconde. Les mots de passe
@@ -321,7 +321,7 @@
                     </div>
                     <div class="attack-card">
                         <div class="attack-header">
-                            <i class="ti ti-book attack-icon"></i>
+                            <i class="ti ti-book attack-icon" aria-hidden="true"></i>
                             <span>Attaque par dictionnaire</span>
                         </div>
                         <p>Les hackers exploitent les mots courants et leurs variantes prévisibles. « Ch@ll3ng3r » reste
@@ -337,19 +337,19 @@
                     <h3 class="section-subtitle">Bonnes pratiques</h3>
                     <ul class="practices-list">
                         <li class="practice-item">
-                            <i class="ti ti-device-floppy practice-icon"></i>
+                            <i class="ti ti-device-floppy practice-icon" aria-hidden="true"></i>
                             <span>Utilisez un gestionnaire de mots de passe chiffré de bout en bout</span>
                         </li>
                         <li class="practice-item">
-                            <i class="ti ti-device-mobile practice-icon"></i>
+                            <i class="ti ti-device-mobile practice-icon" aria-hidden="true"></i>
                             <span>Activez la double authentification (2FA) sur vos comptes sensibles</span>
                         </li>
                         <li class="practice-item">
-                            <i class="ti ti-arrows-shuffle practice-icon"></i>
+                            <i class="ti ti-arrows-shuffle practice-icon" aria-hidden="true"></i>
                             <span>Ne réutilisez jamais le même mot de passe sur deux services</span>
                         </li>
                         <li class="practice-item">
-                            <i class="ti ti-eye-off practice-icon"></i>
+                            <i class="ti ti-eye-off practice-icon" aria-hidden="true"></i>
                             <span>Ne notez jamais vos mots de passe en clair</span>
                         </li>
                     </ul>
@@ -358,10 +358,10 @@
                     <!-- rel="sponsored" : balise SEO requise pour les liens d'affiliation/parrainage -->
                     <div class="proton-rec">
                         <div class="proton-rec-header">
-                            <i class="ti ti-shield-lock proton-rec-icon"></i>
+                            <i class="ti ti-shield-lock proton-rec-icon" aria-hidden="true"></i>
                             <span class="proton-rec-label">Gestionnaire recommandé</span>
                             <img src="assets/Proton_tagline.svg" alt="Proton" class="proton-rec-logo" width="160"
-                                height="18">
+                                height="18" loading="lazy">
                         </div>
                         <p class="proton-rec-text">
                             <strong>Proton</strong> — open source, chiffré de bout en bout, zéro pub, zéro collecte.
@@ -446,7 +446,7 @@
     </button>
 
     <!-- app.js importe le reste des modules via ES modules -->
-    <script type="module" src="app.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 
 </html>
