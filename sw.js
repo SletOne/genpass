@@ -3,13 +3,18 @@
  * Cache les ressources pour un fonctionnement 100 % hors ligne.
  */
 
-const CACHE_NAME = "genpass-v3";
+const CACHE_NAME = "genpass-v4";
 const ASSETS = [
   "/",
   "/index.html",
   "/style.css",
   "/data.js",
-  "/script.js",
+  "/app.js",
+  "/state.js",
+  "/utils.js",
+  "/generator.js",
+  "/security.js",
+  "/ui.js",
   "/tabler-icons.min.css",
   "/manifest.json",
   "/assets/favicon.svg",

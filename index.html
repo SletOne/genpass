@@ -26,12 +26,16 @@
     <meta name="twitter:image" content="https://genpass.fr/assets/og-image.png">
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self' 'sha256-c8ZbTh1ll/jKJwNKRi1Dlnjbj0ZTJtabioBF6dgp3fQ='; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
+        content="default-src 'none'; script-src 'self' 'sha256-6jDNrURdjtoQyjmu7ntGLuxxFj0U+g9ac9C7eOa+Yo8='; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1E293B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- Referrer Policy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Preload font -->
+    <link rel="preload" href="fonts/Pirulen Rg.otf" as="font" type="font/otf" crossorigin>
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -428,6 +432,11 @@
                     <i class="ti ti-shield-check"></i>
                     Vérifier mes identifiants
                 </a>
+                <span class="footer-sep">·</span>
+                <a href="privacy.html" class="footer-link">
+                    <i class="ti ti-lock"></i>
+                    Confidentialité
+                </a>
             </div>
         </div>
     </footer>
@@ -436,8 +445,8 @@
         <i class="ti ti-arrow-up"></i>
     </button>
 
-    <!-- script.js importe data.js via ES modules -->
-    <script type="module" src="script.js"></script>
+    <!-- app.js importe le reste des modules via ES modules -->
+    <script type="module" src="app.js"></script>
 </body>
 
 </html>

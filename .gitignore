@@ -16,7 +16,6 @@ Desktop.ini
 AGENTS.md
 
 # Tests
-tests.js
-tests.html
+tests/
 audit_qwen.md
 

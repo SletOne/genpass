@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité — GenPass</title>
+    <link rel="stylesheet" href="tabler-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <style>
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .privacy-content h1 {
+            margin-bottom: var(--spacing-lg);
+        }
+        .privacy-content h2 {
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+        .privacy-content p {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-secondary);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-brand">
+                <img src="assets/logo.svg" class="brand-logo" alt="GenPass" width="32" height="32">
+                <span class="brand-name">GenPass</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                <i class="ti ti-moon theme-icon moon-icon"></i>
+                <i class="ti ti-sun theme-icon sun-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container" style="display: block;">
+            <div class="privacy-content">
+                <a href="index.html" class="back-link">
+                    <i class="ti ti-arrow-left"></i> Retour à l'accueil
+                </a>
+                
+                <h1 class="heading-primary">Politique de Confidentialité</h1>
+                
+                <h2 class="heading-secondary">1. Collecte de données</h2>
+                <p>GenPass est conçu selon le principe de "Privacy by Default" (Confidentialité par défaut). Nous ne collectons, ne stockons et ne transmettons aucune donnée personnelle ni aucun mot de passe généré.</p>
+                
+                <h2 class="heading-secondary">2. Traitement local</h2>
+                <p>Toute la logique de génération de mots de passe s'exécute localement dans votre navigateur web, grâce à JavaScript. Aucun serveur distant n'est impliqué dans le processus de création de vos mots de passe.</p>
+                
+                <h2 class="heading-secondary">3. Cookies et stockage local</h2>
+                <p>GenPass utilise le stockage local (localStorage) de votre navigateur uniquement pour enregistrer vos préférences d'interface (comme le thème clair ou sombre). Ce stockage ne contient aucune information sensible.</p>
+
+                <h2 class="heading-secondary">4. Hébergement</h2>
+                <p>Ce site est hébergé de manière statique. L'hébergeur peut enregistrer des journaux d'accès (logs) standards incluant votre adresse IP à des fins de sécurité et de maintenance, conformément à sa propre politique de confidentialité.</p>
+
+                <h2 class="heading-secondary">5. Liens externes</h2>
+                <p>Notre site contient des liens vers des services externes (comme Proton Pass ou Have I Been Pwned). Nous ne sommes pas responsables des pratiques de confidentialité de ces sites tiers.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-copy">© 2026 GenPass · Créé par PocketBinary</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to handle theme toggle on the privacy page
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('themeToggle');
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
+    </script>
+</body>
+</html>
