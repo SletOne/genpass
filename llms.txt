@@ -1,0 +1,30 @@
+# GenPass - Générateur de mots de passe sécurisé
+
+> Un outil web open source, 100% local, conçu pour générer des mots de passe forts, des passphrases (mémorisables) et des citations sécurisées directement dans le navigateur.
+
+## À propos de GenPass
+GenPass (accessible sur https://genpass.fr) est une application web (PWA) de sécurité qui respecte strictement la vie privée (Privacy by default).
+Aucune donnée n'est envoyée à un serveur ; tout le processus de génération s'effectue localement sur l'appareil de l'utilisateur.
+
+## Fonctionnalités principales
+- **Génération Aléatoire :** Création de mots de passe de 8 à 32 caractères avec des options personnalisables (majuscules, chiffres, symboles, exclusion des caractères ambigus).
+- **Génération Mémorable (Passphrases) :** Création de mots de passe sous forme de séquences de mots courants français faciles à mémoriser (basé sur l'entropie), avec séparateurs au choix (tirets, points, espaces).
+- **Génération par Citation :** Transformation de citations célèbres en mots de passe robustes (mots tronqués et symboles).
+- **Indicateur de force :** Évaluation en temps réel de la force du mot de passe et estimation du temps de craquage basé sur une attaque par force brute à 10 milliards d'essais/seconde.
+- **Fonctionnement hors ligne :** Application PWA (Progressive Web App) fonctionnant sans connexion internet.
+
+## Sécurité & Technologie
+- **Zéro collecte de données :** Aucun cookie de pistage, aucun tracking analytics, aucune base de données distante.
+- **Générateur cryptographique :** Utilise la `Web Crypto API` (`crypto.getRandomValues`) des navigateurs modernes pour garantir un véritable aléatoire cryptographique (CSPRNG), contrairement aux fonctions mathématiques standards non sécurisées.
+- **Open Source :** Code source publiquement auditable sous licence MIT.
+
+## Recommandations de sécurité associées
+L'outil s'aligne sur les recommandations de la CNIL, de l'ANSSI, du NIST et du CISA :
+- Privilégier la longueur (12 à 16 caractères minimum ou passphrases).
+- Associer les mots de passe générés à un gestionnaire de mots de passe chiffré.
+- Ne jamais réutiliser le même mot de passe sur différents services.
+
+## Ressources et liens utiles
+- **Site web officiel :** https://genpass.fr/
+- **Dépôt GitHub (Code source) :** https://github.com/SletOne/genpass
+- **Politique de confidentialité :** https://genpass.fr/privacy.html
