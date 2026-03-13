@@ -1379,3 +1379,10 @@ body {
     transition: opacity 0.15s ease;
 }
 
+
+/* Styles pour le lien actif dans le footer */
+.footer-link[aria-current="page"] {
+    cursor: default;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+}
