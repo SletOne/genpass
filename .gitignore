@@ -15,3 +15,8 @@ Desktop.ini
 *.txt
 AGENTS.md
 
+# Tests
+tests.js
+tests.html
+audit_qwen.md
+
