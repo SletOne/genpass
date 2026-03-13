@@ -190,8 +190,6 @@ function updateSliderForMode(mode) {
     lengthValue.textContent = currentWords;
     const wordLabel = passwordSettings.memMode === "citation" ? "mots-clés" : "mots";
     lengthUnit.textContent = wordLabel;
-    lengthSlider.setAttribute("aria-valuemin", "3");
-    lengthSlider.setAttribute("aria-valuemax", "8");
     lengthSlider.setAttribute("aria-valuenow", currentWords);
     lengthSlider.setAttribute("aria-valuetext", `${currentWords} ${wordLabel}`);
   } else {
@@ -202,8 +200,6 @@ function updateSliderForMode(mode) {
     passwordSettings.length = currentChars;
     lengthValue.textContent = currentChars;
     lengthUnit.textContent = "caractères";
-    lengthSlider.setAttribute("aria-valuemin", "8");
-    lengthSlider.setAttribute("aria-valuemax", "32");
     lengthSlider.setAttribute("aria-valuenow", currentChars);
     lengthSlider.setAttribute("aria-valuetext", `${currentChars} caractères`);
   }
