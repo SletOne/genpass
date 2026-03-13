@@ -23,7 +23,7 @@ const ASSETS = [
   "/fonts/tabler-icons.ttf",
   "/fonts/tabler-icons.woff",
   "/fonts/tabler-icons.woff2",
-  "/fonts/Pirulen Rg.otf"
+  "/fonts/PirulenRg.otf",
 ];
 
 // Installation : pré-cache des fichiers essentiels
