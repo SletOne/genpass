@@ -147,6 +147,8 @@ body {
     align-items: center;
     gap: var(--spacing-sm);
     flex-shrink: 0; /* Ne rétrécit pas sur petits écrans */
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Logo SVG adapté au thème via filter CSS */
@@ -290,6 +292,11 @@ body {
     display: grid;
     grid-template-columns: 380px 1fr 420px;
     gap: var(--spacing-lg);
+}
+
+/* Modificateur pour conteneur simple colonne */
+.container-block {
+    display: block;
 }
 
 /* Carte générique */
