@@ -18,7 +18,7 @@
     --color-bg-main: #F8FAFC;           /* Slate-50 : fond de page */
     --color-bg-card: #FFFFFF;           /* Fond des cartes */
     --color-text-primary: #1E293B;      /* Texte principal */
-    --color-text-secondary: #64748B;    /* Slate-500 : texte secondaire */
+    --color-text-secondary: #475569;    /* Slate-600 : texte secondaire (contraste amélioré) */
     --color-border: #E2E8F0;            /* Slate-200 : bordures */
     --color-border-active: #10B981;     /* Bordure active / focus */
 
@@ -65,7 +65,7 @@
     --color-bg-main: #0F172A;           /* Slate-900 */
     --color-bg-card: #1E293B;           /* Slate-800 */
     --color-text-primary: #F1F5F9;
-    --color-text-secondary: #94A3B8;    /* Slate-400 */
+    --color-text-secondary: #CBD5E1;    /* Slate-300 (contraste amélioré) */
     --color-border: #334155;            /* Slate-700 */
     --color-border-active: #34D399;
 
