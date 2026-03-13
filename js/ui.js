@@ -1,7 +1,12 @@
-import { passwordSettings, appState } from './state.js';
-import { calculatePasswordStrength, estimateCrackTime } from './security.js';
-import { generatePassword, generateRandomPassword, generateMemorablePassword, generateCitationPassword } from './generator.js';
-import { escapeHtml, showToast } from './utils.js';
+import { passwordSettings, appState } from "./state.js";
+import { calculatePasswordStrength, estimateCrackTime } from "./security.js";
+import {
+  generatePassword,
+  generateRandomPassword,
+  generateMemorablePassword,
+  generateCitationPassword,
+} from "./generator.js";
+import { escapeHtml, showToast } from "./utils.js";
 
 let lengthSlider,
   lengthValue,
@@ -77,7 +82,10 @@ function attachEventListeners() {
       unit = "caractères";
     }
     lengthSlider.setAttribute("aria-valuenow", passwordSettings.length);
-    lengthSlider.setAttribute("aria-valuetext", `${passwordSettings.length} ${unit}`);
+    lengthSlider.setAttribute(
+      "aria-valuetext",
+      `${passwordSettings.length} ${unit}`,
+    );
     updatePasswordDisplay();
   });
 
@@ -160,7 +168,8 @@ function attachEventListeners() {
       btn.classList.add("active");
       btn.setAttribute("aria-pressed", "true");
       passwordSettings.memMode = btn.dataset.memmode;
-      const wordLabel = btn.dataset.memmode === "citation" ? "mots-clés" : "mots";
+      const wordLabel =
+        btn.dataset.memmode === "citation" ? "mots-clés" : "mots";
       lengthUnit.textContent = wordLabel;
       updatePasswordDisplay();
       generateOtherPasswords();
@@ -182,20 +191,27 @@ function updateOptionsPanel(mode) {
 
 function updateSliderForMode(mode) {
   if (mode === "memorable") {
-    const currentWords = Math.max(3, Math.min(8, Math.floor(passwordSettings.length / 4)));
+    const currentWords = Math.max(
+      3,
+      Math.min(8, Math.floor(passwordSettings.length / 4)),
+    );
     lengthSlider.min = 3;
     lengthSlider.max = 8;
     lengthSlider.value = currentWords;
     passwordSettings.length = currentWords;
     lengthValue.textContent = currentWords;
-    const wordLabel = passwordSettings.memMode === "citation" ? "mots-clés" : "mots";
+    const wordLabel =
+      passwordSettings.memMode === "citation" ? "mots-clés" : "mots";
     lengthUnit.textContent = wordLabel;
     lengthSlider.setAttribute("aria-valuenow", currentWords);
     lengthSlider.setAttribute("aria-valuetext", `${currentWords} ${wordLabel}`);
   } else {
     lengthSlider.min = 8;
     lengthSlider.max = 32;
-    const currentChars = Math.max(8, Math.min(32, passwordSettings.length < 8 ? 16 : passwordSettings.length));
+    const currentChars = Math.max(
+      8,
+      Math.min(32, passwordSettings.length < 8 ? 16 : passwordSettings.length),
+    );
     lengthSlider.value = currentChars;
     passwordSettings.length = currentChars;
     lengthValue.textContent = currentChars;
@@ -207,8 +223,12 @@ function updateSliderForMode(mode) {
 
 function updatePasswordDisplay() {
   const password = generatePassword();
-  
-  if (passwordSettings.type === "memorable" && passwordSettings.memMode === "citation" && appState.lastCitationUsed) {
+
+  if (
+    passwordSettings.type === "memorable" &&
+    passwordSettings.memMode === "citation" &&
+    appState.lastCitationUsed
+  ) {
     citationHint.classList.remove("hidden");
     citationText.textContent = "« " + appState.lastCitationUsed.text + " »";
     citationAuthor.textContent = "— " + appState.lastCitationUsed.author;
@@ -217,11 +237,11 @@ function updatePasswordDisplay() {
   }
 
   // Adding visual loading state
-  generatedPassword.style.opacity = '0.5';
-  
+  generatedPassword.style.opacity = "0.5";
+
   setTimeout(() => {
     generatedPassword.textContent = password;
-    generatedPassword.style.opacity = '1';
+    generatedPassword.style.opacity = "1";
     updateSecurityGauge(password);
   }, 100);
 }
@@ -248,7 +268,7 @@ function generateOtherPasswords() {
     }
   }
 
-  passwordList.style.opacity = '0.5';
+  passwordList.style.opacity = "0.5";
 
   setTimeout(() => {
     passwordList.innerHTML = passwords
@@ -264,12 +284,14 @@ function generateOtherPasswords() {
       )
       .join("");
 
-    passwordList.style.opacity = '1';
+    passwordList.style.opacity = "1";
 
     document.querySelectorAll(".copy-btn-small").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const item = e.target.closest(".password-item");
-        const passwordText = item.querySelector(".password-text-small").textContent;
+        const passwordText = item.querySelector(
+          ".password-text-small",
+        ).textContent;
         const icon = btn.querySelector("i");
 
         copyToClipboard(passwordText);
@@ -285,9 +307,12 @@ function updateSecurityGauge(password) {
   const strength = calculatePasswordStrength(password);
 
   const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-  const colorStrong = isDark ? "#34D399" : "#10B981";
-  const colorMedium = isDark ? "#FBBF24" : "#F59E0B";
-  const colorWeak = "#EF4444";
+  // Couleurs avec contraste WCAG AA (4.5:1 minimum)
+  // Thème clair : versions foncées (Emerald-800, Amber-700, Red-700)
+  // Thème sombre : versions claires (Emerald-400, Amber-400, Red-400)
+  const colorStrong = isDark ? "#34D399" : "#065F46";
+  const colorMedium = isDark ? "#FBBF24" : "#B45309";
+  const colorWeak = isDark ? "#F87171" : "#B91C1C";
 
   if (strength >= 75) {
     strengthLabel.textContent = "fort";
