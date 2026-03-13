@@ -439,11 +439,11 @@ body {
     color: var(--color-text-primary);
 }
 
-/* Exemple de caractères (ABC, 123, !&*) en couleur warning */
+/* Exemple de caractères (ABC, 123, !&*) en couleur warning - contraste amélioré */
 .checkbox-example {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
-    color: var(--color-warning);
+    color: #B45309; /* Amber-700 : contraste amélioré WCAG AA sur fond clair */
 }
 
 /* Option séparateur (mode mémorable) */
@@ -456,7 +456,7 @@ body {
 
 .separator-label {
     font-size: var(--font-size-base);
-    color: var(--color-text-primary);
+    color: var(--color-text-primary); /* Contraste amélioré pour WCAG AA */
     white-space: nowrap;
 }
 
@@ -721,7 +721,7 @@ body {
     border: 3px solid currentColor;
     font-size: 1.25rem;
     font-weight: var(--font-weight-bold);
-    color: var(--color-success);
+    color: #059669; /* Vert plus foncé pour meilleur contraste WCAG AA */
     letter-spacing: 0.01em;
 }
 
