@@ -19,12 +19,14 @@ Générateur de mots de passe sécurisé — 100 % local, zéro collecte de donn
 - **5 suggestions** — Alternatives générées en un clic pour choisir rapidement
 - **Thème clair / sombre** — Bascule instantanée, préférence sauvegardée
 - **PWA installable** — Fonctionne 100 % hors ligne grâce au Service Worker
+- **Accessibilité & SEO** — Support complet des lecteurs d'écran (Aria), données structurées JSON-LD et optimisation Open Graph / Twitter Cards
 - **Raccourci clavier** — `Entrée` pour régénérer
 
 ## Stack technique
 
 | Catégorie   | Technologie                                                                                                       |
 | ----------- | ----------------------------------------------------------------------------------------------------------------- |
+| Architecture| Architecture modulaire (ES Modules), dossiers séparés pour `css/` et `js/`                                        |
 | Langage     | Vanilla JavaScript (ES6+) — zéro dépendance                                                                       |
 | Crypto      | [Web Crypto API](https://developer.mozilla.org/fr/docs/Web/API/Crypto/getRandomValues) (`crypto.getRandomValues`) |
 | Icônes      | [Tabler Icons](https://tabler.io/icons) (CSS local, pas de CDN)                                                   |
