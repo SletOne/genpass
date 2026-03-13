@@ -7,6 +7,15 @@
     font-display: swap; /* Évite le FOIT (flash of invisible text) */
 }
 
+/* Tabler Icons : uniquement woff2 (le plus léger) avec swap */
+@font-face {
+    font-family: 'Tabler Icons';
+    src: url('../fonts/tabler-icons.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* ===== Tokens de design (variables CSS) ===== */
 /* Palette : gris slate + vert emerald → sobre, orienté outil de sécurité */
 :root {
