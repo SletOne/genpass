@@ -9,13 +9,12 @@ Desktop.ini
 *.swp
 *.swo
 *~
+.claude/
 
 # Logs
 *.log
 *.txt
 AGENTS.md
 
-# Tests
-tests/
-audit_qwen.md
+
 

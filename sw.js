@@ -3,28 +3,30 @@
  * Cache les ressources pour un fonctionnement 100 % hors ligne.
  */
 
-const CACHE_NAME = "genpass-v1.0.2";
+const CACHE_NAME = "genpass-v1.0.3";
 const ASSETS = [
   "/",
   "/index.html",
   "/privacy.html",
   "/css/style.css",
-  "/js/data.js",
+  "/css/critical.css",
+  "/css/tabler-icons.min.css",
   "/js/app.js",
+  "/js/theme.js",
   "/js/state.js",
   "/js/utils.js",
   "/js/generator.js",
   "/js/security.js",
   "/js/ui.js",
   "/js/privacy.js",
-  "/css/tabler-icons.min.css",
+  "/js/data.js",
   "/manifest.json",
   "/assets/favicon.svg",
   "/assets/logo.svg",
   "/assets/Proton_tagline.svg",
-  // Only woff2 format (smallest, best compression)
-  "/fonts/tabler-icons.woff2",
-  "/fonts/PirulenRg.otf",
+  // Polices en WOFF2 uniquement (format le plus léger)
+  "/fonts/tabler-icons.subset.woff2",
+  "/fonts/PirulenRg.woff2",
 ];
 
 // Installation : pré-cache des fichiers essentiels

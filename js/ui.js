@@ -7,6 +7,7 @@ import {
   generateCitationPassword,
 } from "./generator.js";
 import { escapeHtml, showToast } from "./utils.js";
+import { initTheme, toggleTheme } from "./theme.js";
 
 let lengthSlider,
   lengthValue,
@@ -222,7 +223,13 @@ function updateSliderForMode(mode) {
 }
 
 function updatePasswordDisplay() {
-  const password = generatePassword();
+  let password;
+  try {
+    password = generatePassword();
+  } catch {
+    showToast("Erreur : Web Crypto API indisponible sur ce navigateur", true);
+    return;
+  }
 
   if (
     passwordSettings.type === "memorable" &&
@@ -249,23 +256,28 @@ function updatePasswordDisplay() {
 function generateOtherPasswords() {
   const passwords = [];
 
-  for (let i = 0; i < 5; i++) {
-    if (passwordSettings.type === "memorable") {
-      if (passwordSettings.memMode === "citation") {
-        passwords.push(generateCitationPassword().password);
+  try {
+    for (let i = 0; i < 5; i++) {
+      if (passwordSettings.type === "memorable") {
+        if (passwordSettings.memMode === "citation") {
+          passwords.push(generateCitationPassword().password);
+        } else {
+          passwords.push(generateMemorablePassword());
+        }
       } else {
-        passwords.push(generateMemorablePassword());
+        passwords.push(
+          generateRandomPassword(
+            passwordSettings.length,
+            passwordSettings.uppercase,
+            passwordSettings.numbers,
+            passwordSettings.symbols,
+          ),
+        );
       }
-    } else {
-      passwords.push(
-        generateRandomPassword(
-          passwordSettings.length,
-          passwordSettings.uppercase,
-          passwordSettings.numbers,
-          passwordSettings.symbols,
-        ),
-      );
     }
+  } catch {
+    showToast("Erreur : Web Crypto API indisponible sur ce navigateur", true);
+    return;
   }
 
   passwordList.style.opacity = "0.5";
@@ -347,18 +359,6 @@ function copyToClipboard(text) {
     });
 }
 
-function initTheme() {
-  const savedTheme = localStorage.getItem("theme") || "light";
-  document.documentElement.setAttribute("data-theme", savedTheme);
-}
-
-function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  const newTheme = currentTheme === "light" ? "dark" : "light";
-
-  document.documentElement.setAttribute("data-theme", newTheme);
-  localStorage.setItem("theme", newTheme);
-}
 
 function initScrollTop() {
   const btn = document.getElementById("scrollTop");

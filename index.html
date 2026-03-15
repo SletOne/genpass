@@ -26,7 +26,7 @@
     <meta name="twitter:image" content="https://genpass.fr/assets/og-image.png">
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self' 'sha256-6jDNrURdjtoQyjmu7ntGLuxxFj0U+g9ac9C7eOa+Yo8='; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1E293B">
@@ -40,6 +40,7 @@
     <link rel="preload" href="fonts/tabler-icons.subset.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Modulepreload : tous les modules JS chargés en parallèle dès le parsing du head -->
     <link rel="modulepreload" href="js/app.js">
+    <link rel="modulepreload" href="js/theme.js">
     <link rel="modulepreload" href="js/ui.js">
     <link rel="modulepreload" href="js/utils.js">
     <link rel="modulepreload" href="js/state.js">
@@ -83,10 +84,10 @@
     <!-- Header -->
     <header class="site-header">
         <div class="header-inner">
-            <div class="header-brand">
-                <img src="assets/logo.svg" class="brand-logo" alt="GenPass" width="32" height="32" loading="eager">
+            <a href="/" class="header-brand" aria-label="GenPass — Retour à l'accueil">
+                <img src="assets/logo.svg" class="brand-logo" alt="" width="32" height="32" loading="eager">
                 <span class="brand-name">GenPass</span>
-            </div>
+            </a>
             <p class="header-tagline">Générez des mots de passe forts — 100&nbsp;% local, zéro collecte de données</p>
             <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
                 <i class="ti ti-moon theme-icon moon-icon" aria-hidden="true"></i>

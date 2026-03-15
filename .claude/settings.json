@@ -4,7 +4,16 @@
       "Bash(pip show:*)",
       "Bash(pyftsubset fonts/tabler-icons.woff2 --unicodes=\"U+EAF8,U+EB30,U+EA5E,U+EA7A,U+EA51,U+EB13,U+EED2,U+F000,U+EAE2,U+EF8E,U+EA39,U+EB62,U+EA8A,U+ECF0,U+ED58,U+EA99,U+EA5F,U+EC1C,U+EB22,U+EA25,U+EA19\" --flavor=woff2 --output-file=fonts/tabler-icons.subset.woff2)",
       "Bash(python -c \":*)",
-      "Bash(rm d:/Developpement/genpass/fonts/tabler-icons.tmp.ttf)"
+      "Bash(rm d:/Developpement/genpass/fonts/tabler-icons.tmp.ttf)",
+      "Bash(grep -n \"import\\\\|export\" /d/Developpement/genpass/js/*.js)",
+      "Bash(grep -n \"script-src\\\\|style-src\\\\|img-src\\\\|font-src\\\\|connect-src\" /d/Developpement/genpass/*.html)",
+      "Bash(grep -rn \"TODO\\\\|FIXME\\\\|XXX\\\\|HACK\\\\|BUG\" /d/Developpement/genpass/js/ /d/Developpement/genpass/*.html)",
+      "Bash(grep -n \"startsWith\\\\|includes\\\\|padStart\\\\|trimEnd\" /d/Developpement/genpass/js/*.js)",
+      "Bash(grep -n \"crypto\\\\.\\\\|Uint32Array\\\\|Uint8Array\" /d/Developpement/genpass/js/*.js)",
+      "Bash(grep -n \"setTimeout\\\\|setInterval\" /d/Developpement/genpass/js/*.js)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\steph\\.claude\\projects\\d--Developpement-genpass"
     ]
   }
 }
