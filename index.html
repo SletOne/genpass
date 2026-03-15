@@ -26,7 +26,7 @@
     <meta name="twitter:image" content="https://genpass.fr/assets/og-image.png">
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
+        content="default-src 'none'; script-src 'self'; style-src 'self' 'sha256-gZEMXY+Ti3OKkXIjVT8OJNDdq4gwC88ZYDD8nzXsb4E='; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'">
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1E293B">
@@ -62,9 +62,36 @@
         "inLanguage": "fr"
     }
     </script>
-    <!-- Styles critiques (above-the-fold) : bloquants mais minuscules -->
+    <!-- Styles critiques (above-the-fold) : inlinés pour éliminer la requête bloquante -->
     <link rel="stylesheet" href="css/tabler-icons.min.css">
-    <link rel="stylesheet" href="css/critical.css">
+    <style>@font-face{font-family:'Pirulen';src:url('../fonts/PirulenRg.woff2') format('woff2');font-weight:400;font-display:swap}
+
+:root{--color-primary:#1E293B;--color-primary-hover:#0F172A;--color-success:#10B981;--color-warning:#F59E0B;--color-bg-main:#F8FAFC;--color-bg-card:#FFFFFF;--color-text-primary:#1E293B;--color-text-secondary:#475569;--color-border:#E2E8F0;--color-border-active:#10B981;--font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Helvetica','Arial',sans-serif;--font-size-xl:32px;--font-size-lg:20px;--font-size-md:16px;--font-size-base:14px;--font-size-sm:13px;--font-size-xs:12px;--font-weight-bold:700;--font-weight-semibold:600;--font-weight-medium:500;--font-weight-regular:400;--spacing-xs:8px;--spacing-sm:12px;--spacing-md:16px;--spacing-lg:24px;--spacing-xl:32px;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-full:9999px;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px rgba(0,0,0,0.07);--shadow-lg:0 10px 15px rgba(0,0,0,0.1)}
+
+[data-theme="dark"]{--color-primary:#E2E8F0;--color-primary-hover:#F1F5F9;--color-success:#34D399;--color-warning:#FBBF24;--color-bg-main:#0F172A;--color-bg-card:#1E293B;--color-text-primary:#F1F5F9;--color-text-secondary:#CBD5E1;--color-border:#334155;--color-border-active:#34D399;--shadow-sm:0 1px 2px rgba(0,0,0,0.3);--shadow-md:0 4px 6px rgba(0,0,0,0.4);--shadow-lg:0 10px 15px rgba(0,0,0,0.5)}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+.hidden{display:none!important}
+
+body{font-family:var(--font-family);background-color:var(--color-bg-main);color:var(--color-text-primary);line-height:1.6;padding:0}
+
+.site-header{background:var(--color-bg-card);border-bottom:1px solid var(--color-border);padding:var(--spacing-md) var(--spacing-xl);position:sticky;top:0;z-index:100}
+
+.header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--spacing-lg)}
+
+.header-brand{display:flex;align-items:center;gap:var(--spacing-sm);flex-shrink:0;text-decoration:none;color:inherit}
+
+.brand-logo{height:32px;width:auto;display:block;flex-shrink:0;filter:brightness(0)}
+
+[data-theme="dark"] .brand-logo{filter:brightness(0) invert(1)}
+
+.brand-name{font-family:'Pirulen','Orbitron',var(--font-family);font-size:18px;font-weight:700;color:var(--color-text-primary);letter-spacing:1px}
+
+.header-tagline{font-size:var(--font-size-sm);color:var(--color-text-secondary);text-align:center;flex:1}
+
+.site-main{padding:var(--spacing-xl)}
+</style>
     <!-- Préchargement de style.css : téléchargé en parallèle, appliqué en bas de <body> -->
     <link rel="preload" href="css/style.css" as="style">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">

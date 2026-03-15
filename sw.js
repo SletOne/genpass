@@ -3,7 +3,7 @@
  * Cache les ressources pour un fonctionnement 100 % hors ligne.
  */
 
-const CACHE_NAME = "genpass-v1.0.3";
+const CACHE_NAME = "genpass-v1.0.4";
 const ASSETS = [
   "/",
   "/index.html",

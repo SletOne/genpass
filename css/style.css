@@ -1,13 +1,9 @@
-/* ===== Police personnalisée ===== */
-/* Pirulen : police monospace stylisée pour le nom de la marque */
 @font-face {
     font-family: 'Pirulen';
     src: url('../fonts/PirulenRg.woff2') format('woff2');
     font-weight: 400;
-    font-display: swap; /* Évite le FOIT (flash of invisible text) */
+    font-display: swap; 
 }
-
-/* Tabler Icons : uniquement woff2 (le plus léger) avec swap */
 @font-face {
     font-family: 'Tabler Icons';
     src: url('../fonts/tabler-icons.subset.woff2') format('woff2');
@@ -15,23 +11,17 @@
     font-style: normal;
     font-display: swap;
 }
-
-/* ===== Tokens de design (variables CSS) ===== */
-/* Palette : gris slate + vert emerald → sobre, orienté outil de sécurité */
 :root {
-    /* Couleurs thème clair */
-    --color-primary: #1E293B;           /* Slate-800 : texte/boutons primaires */
-    --color-primary-hover: #0F172A;     /* Slate-900 : hover */
-    --color-success: #10B981;           /* Emerald-500 : accents, succès, force */
-    --color-warning: #F59E0B;           /* Amber-500 : avertissements */
-    --color-bg-main: #F8FAFC;           /* Slate-50 : fond de page */
-    --color-bg-card: #FFFFFF;           /* Fond des cartes */
-    --color-text-primary: #1E293B;      /* Texte principal */
-    --color-text-secondary: #475569;    /* Slate-600 : texte secondaire (contraste amélioré) */
-    --color-border: #E2E8F0;            /* Slate-200 : bordures */
-    --color-border-active: #10B981;     /* Bordure active / focus */
-
-    /* Typographie */
+    --color-primary: #1E293B;           
+    --color-primary-hover: #0F172A;     
+    --color-success: #10B981;           
+    --color-warning: #F59E0B;           
+    --color-bg-main: #F8FAFC;           
+    --color-bg-card: #FFFFFF;           
+    --color-text-primary: #1E293B;      
+    --color-text-secondary: #475569;    
+    --color-border: #E2E8F0;            
+    --color-border-active: #10B981;     
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     --font-size-xl: 32px;
     --font-size-lg: 20px;
@@ -43,55 +33,40 @@
     --font-weight-semibold: 600;
     --font-weight-medium: 500;
     --font-weight-regular: 400;
-
-    /* Espacements */
     --spacing-xs: 8px;
     --spacing-sm: 12px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
     --spacing-xl: 32px;
-
-    /* Rayons de bordure */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
     --radius-full: 9999px;
-
-    /* Ombres */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
-
-/* ===== Thème sombre ===== */
-/* Surcharge les tokens avec la palette dark (Slate-900 / Slate-800) */
 [data-theme="dark"] {
-    --color-primary: #E2E8F0;           /* Slate clair → contraste élevé sur fond sombre */
+    --color-primary: #E2E8F0;           
     --color-primary-hover: #F1F5F9;
-    --color-success: #34D399;           /* Emerald plus lumineux pour le dark */
-    --color-warning: #FBBF24;           /* Amber plus lumineux */
-    --color-bg-main: #0F172A;           /* Slate-900 */
-    --color-bg-card: #1E293B;           /* Slate-800 */
+    --color-success: #34D399;           
+    --color-warning: #FBBF24;           
+    --color-bg-main: #0F172A;           
+    --color-bg-card: #1E293B;           
     --color-text-primary: #F1F5F9;
-    --color-text-secondary: #CBD5E1;    /* Slate-300 (contraste amélioré) */
-    --color-border: #334155;            /* Slate-700 */
+    --color-text-secondary: #CBD5E1;    
+    --color-border: #334155;            
     --color-border-active: #34D399;
-
-    /* Ombres plus marquées sur fond sombre */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
 }
-
-/* ===== Reset & Base ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Noscript fallback */
 .noscript-warning {
     text-align: center;
     padding: 2rem;
@@ -99,37 +74,25 @@
     background: #FEF3C7;
     color: #92400E;
 }
-
-/* Classe utilitaire : masquer un élément sans inline style (compatible CSP) */
 .hidden {
     display: none !important;
 }
-
-/* Focus visible : anneau de focus uniquement pour la navigation clavier (pas au clic souris) */
-/* Conforme WCAG 2.1 critère 2.4.7 - Focus Visible */
 :focus-visible {
     outline: 2px solid var(--color-success);
     outline-offset: 3px;
     border-radius: 4px;
 }
-
-/* Supprimer l'outline natif quand on utilise :focus-visible */
 :focus:not(:focus-visible) {
     outline: none;
 }
-
 body {
     font-family: var(--font-family);
     background-color: var(--color-bg-main);
     color: var(--color-text-primary);
     line-height: 1.6;
     padding: 0;
-    /* Transition douce lors du changement de thème */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* ===== Header ===== */
-/* Header sticky avec séparateur bas de bordure */
 .site-header {
     background: var(--color-bg-card);
     border-bottom: 1px solid var(--color-border);
@@ -137,10 +100,8 @@ body {
     transition: background-color 0.3s ease, border-color 0.3s ease;
     position: sticky;
     top: 0;
-    z-index: 100; /* Au-dessus du contenu principal */
+    z-index: 100; 
 }
-
-/* Conteneur centré du header : logo | tagline | toggle */
 .header-inner {
     max-width: 1400px;
     margin: 0 auto;
@@ -149,32 +110,25 @@ body {
     justify-content: space-between;
     gap: var(--spacing-lg);
 }
-
-/* Groupe logo + nom de marque */
 .header-brand {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    flex-shrink: 0; /* Ne rétrécit pas sur petits écrans */
+    flex-shrink: 0; 
     text-decoration: none;
     color: inherit;
 }
-
-/* Logo SVG adapté au thème via filter CSS */
 .brand-logo {
     height: 32px;
     width: auto;
     display: block;
     flex-shrink: 0;
-    filter: brightness(0);           /* Noir en thème clair */
+    filter: brightness(0);           
     transition: filter 0.3s ease;
 }
-
 [data-theme="dark"] .brand-logo {
-    filter: brightness(0) invert(1); /* Blanc en thème sombre */
+    filter: brightness(0) invert(1); 
 }
-
-/* Nom "GenPass" en police Pirulen */
 .brand-name {
     font-family: 'Pirulen', 'Orbitron', var(--font-family);
     font-size: 18px;
@@ -182,21 +136,15 @@ body {
     color: var(--color-text-primary);
     letter-spacing: 1px;
 }
-
-/* Tagline centrale : masquée sur mobile */
 .header-tagline {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     text-align: center;
-    flex: 1; /* Occupe l'espace disponible entre brand et toggle */
+    flex: 1; 
 }
-
-/* ===== Contenu principal ===== */
 .site-main {
     padding: var(--spacing-xl);
 }
-
-/* ===== Footer ===== */
 .site-footer {
     background: var(--color-bg-card);
     border-top: 1px solid var(--color-border);
@@ -204,7 +152,6 @@ body {
     margin-top: var(--spacing-xl);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-
 .footer-inner {
     max-width: 1400px;
     margin: 0 auto;
@@ -213,18 +160,15 @@ body {
     justify-content: space-between;
     gap: var(--spacing-lg);
 }
-
 .footer-copy {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
 }
-
 .footer-links {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
 }
-
 .footer-link {
     display: flex;
     align-items: center;
@@ -234,18 +178,13 @@ body {
     text-decoration: none;
     transition: color 0.2s ease;
 }
-
 .footer-link:hover {
     color: var(--color-success);
 }
-
-/* Séparateur visuel entre les liens du footer */
 .footer-sep {
     color: var(--color-border);
     font-size: var(--font-size-sm);
 }
-
-/* ===== Typographie ===== */
 .heading-primary {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
@@ -253,48 +192,37 @@ body {
     margin-bottom: var(--spacing-xs);
     line-height: 1.2;
 }
-
 .heading-secondary {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-md);
 }
-
 .heading-tertiary {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-xs);
 }
-
 .text-secondary {
     color: var(--color-text-secondary);
     font-size: var(--font-size-base);
 }
-
 .text-small {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
 }
-
 .text-center {
     text-align: center;
 }
-
-/* Lien textuel inline */
 .link {
     color: var(--color-primary);
     text-decoration: underline;
     cursor: pointer;
 }
-
 .link:hover {
     color: var(--color-primary-hover);
 }
-
-/* ===== Mise en page principale ===== */
-/* Grille 3 colonnes : paramètres | mot de passe | sécurité */
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -302,13 +230,9 @@ body {
     grid-template-columns: 380px 1fr 420px;
     gap: var(--spacing-lg);
 }
-
-/* Modificateur pour conteneur simple colonne */
 .container-block {
     display: block;
 }
-
-/* Carte générique */
 .card {
     background: var(--color-bg-card);
     border-radius: var(--radius-lg);
@@ -316,20 +240,15 @@ body {
     box-shadow: var(--shadow-md);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* ===== Carte des paramètres (colonne gauche) ===== */
 .settings-card {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
 }
-
-/* Boutons de bascule Random / Mémorable */
 .toggle-group {
     display: flex;
     gap: var(--spacing-sm);
 }
-
 .toggle-btn {
     flex: 1;
     padding: var(--spacing-sm) var(--spacing-lg);
@@ -342,35 +261,26 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
 .toggle-btn:hover {
     border-color: var(--color-primary);
 }
-
-/* Bouton actif : bordure + texte colorés */
 .toggle-btn.active {
     border-color: var(--color-primary);
     background: transparent;
     color: var(--color-primary);
 }
-
-/* Curseur de longueur */
 .slider-container {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
-
 .slider-label {
     font-size: var(--font-size-base);
     color: var(--color-text-primary);
 }
-
 #lengthValue {
     font-weight: var(--font-weight-semibold);
 }
-
-/* Style natif du range input retiré, remplacé par du CSS */
 .slider {
     width: 100%;
     height: 6px;
@@ -380,7 +290,6 @@ body {
     -webkit-appearance: none;
     appearance: none;
 }
-
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -390,7 +299,6 @@ body {
     background: var(--color-primary);
     cursor: pointer;
 }
-
 .slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
@@ -399,26 +307,20 @@ body {
     cursor: pointer;
     border: none;
 }
-
-/* Groupe de cases à cocher (majuscules / chiffres / symboles) */
 .checkbox-group {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
 }
-
 .checkbox-item {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
     cursor: pointer;
 }
-
-/* La case native est masquée — remplacée par .checkbox-custom */
 .checkbox-item input[type="checkbox"] {
     display: none;
 }
-
 .checkbox-custom {
     width: 24px;
     height: 24px;
@@ -430,14 +332,10 @@ body {
     background: transparent;
     transition: all 0.2s ease;
 }
-
-/* Case cochée : fond coloré avec --color-primary */
 .checkbox-item input[type="checkbox"]:checked + .checkbox-custom {
     background: var(--color-primary);
     border-color: var(--color-primary);
 }
-
-/* Icône check dans la case personnalisée */
 .check-icon {
     font-size: 16px;
     color: white;
@@ -445,38 +343,30 @@ body {
     transition: opacity 0.2s ease;
     line-height: 1;
 }
-
 .checkbox-item input[type="checkbox"]:checked + .checkbox-custom .check-icon {
     opacity: 1;
 }
-
 .checkbox-label {
     flex: 1;
     font-size: var(--font-size-base);
     color: var(--color-text-primary);
 }
-
-/* Exemple de caractères (ABC, 123, !&*) en couleur warning - contraste amélioré */
 .checkbox-example {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
-    color: #B45309; /* Amber-700 : contraste amélioré WCAG AA sur fond clair */
+    color: #B45309; 
 }
-
-/* Option séparateur (mode mémorable) */
 .separator-option {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    padding-left: 36px; /* Aligné avec les labels des checkboxes (24px box + 12px gap) */
+    padding-left: 36px; 
 }
-
 .separator-label {
     font-size: var(--font-size-base);
-    color: var(--color-text-primary); /* Contraste amélioré pour WCAG AA */
+    color: var(--color-text-primary); 
     white-space: nowrap;
 }
-
 .separator-select {
     flex: 1;
     max-width: 200px;
@@ -495,17 +385,13 @@ body {
     background-position: right 10px center;
     padding-right: 28px;
 }
-
 .separator-select:hover {
     border-color: var(--color-text-secondary);
 }
-
 .separator-select:focus {
     border-color: var(--color-border-active);
     outline: none;
 }
-
-/* Sous-toggle mode mémorable : Mots aléatoires / Phrase connue */
 .mem-mode-group {
     display: flex;
     gap: var(--spacing-xs);
@@ -513,7 +399,6 @@ body {
     background: var(--color-border);
     border-radius: var(--radius-lg);
 }
-
 .mem-mode-btn {
     flex: 1;
     padding: 6px var(--spacing-md);
@@ -526,18 +411,14 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
 .mem-mode-btn:hover {
     color: var(--color-text-primary);
 }
-
 .mem-mode-btn.active {
     background: var(--color-bg-card);
     color: var(--color-primary);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
-/* Indice citation (phrase source) */
 .citation-hint {
     display: flex;
     align-items: flex-start;
@@ -547,14 +428,12 @@ body {
     border-radius: var(--radius-md);
     border-left: 3px solid var(--color-primary);
 }
-
 .citation-hint-icon {
     font-size: 18px;
     color: var(--color-primary);
     flex-shrink: 0;
     margin-top: 2px;
 }
-
 .citation-hint-text {
     display: flex;
     flex-direction: column;
@@ -564,29 +443,22 @@ body {
     line-height: 1.4;
     font-style: italic;
 }
-
 .citation-author {
     font-style: normal;
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
     font-size: var(--font-size-xs, 0.75rem);
 }
-
-/* ===== Carte du mot de passe (colonne centrale) ===== */
 .password-card {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
 }
-
-/* Conteneur : champ mot de passe + bouton copier côte à côte */
 .password-display-container {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
 }
-
-/* Zone d'affichage du mot de passe généré */
 .password-display {
     flex: 1;
     padding: var(--spacing-md) var(--spacing-lg);
@@ -594,16 +466,12 @@ body {
     border-radius: var(--radius-md);
     background: var(--color-bg-card);
 }
-
-/* Texte du mot de passe : police monospace, couleur accent */
 .password-text {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-medium);
-    color: #047857; /* Emerald-700 : contraste WCAG AA (4.5:1) sur fond clair */
-    word-break: break-all; /* Évite le débordement horizontal */
+    color: #047857; 
+    word-break: break-all; 
 }
-
-/* Bouton avec icône + label (ex: "Copier") */
 .btn-icon {
     display: flex;
     align-items: center;
@@ -618,17 +486,13 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
 .btn-icon:hover {
     background: var(--color-primary);
     color: white;
 }
-
 .btn-icon:hover .icon {
     color: white;
 }
-
-/* Bouton d'action principal (plein) */
 .btn-primary {
     display: flex;
     align-items: center;
@@ -644,34 +508,25 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
 .btn-primary:hover {
     background: var(--color-primary-hover);
 }
-
 .btn-primary .icon {
     font-size: 20px;
     line-height: 1;
 }
-
-/* Taille standard des icônes Tabler */
 .icon {
     font-size: 20px;
     line-height: 1;
 }
-
-/* ===== Liste des suggestions (autres mots de passe) ===== */
 .other-passwords {
     margin-top: var(--spacing-lg);
 }
-
 .password-list {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
-
-/* Ligne d'une suggestion : texte + bouton copier */
 .password-item {
     display: flex;
     align-items: center;
@@ -681,15 +536,11 @@ body {
     border-radius: var(--radius-sm);
     background: var(--color-bg-card);
 }
-
-/* Texte monospace pour les suggestions */
 .password-text-small {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     font-family: 'Courier New', monospace;
 }
-
-/* Petit bouton copier (icône seule) */
 .btn-icon-small {
     background: transparent;
     border: none;
@@ -698,18 +549,14 @@ body {
     opacity: 0.6;
     transition: opacity 0.2s ease;
 }
-
 .btn-icon-small:hover {
     opacity: 1;
 }
-
 .icon-small {
     font-size: 16px;
     line-height: 1;
     color: var(--color-text-secondary);
 }
-
-/* ===== Carte sécurité (colonne droite) ===== */
 .security-card {
     display: flex;
     flex-direction: column;
@@ -717,17 +564,12 @@ body {
     align-items: center;
     text-align: center;
 }
-
-/* Jauge SVG demi-cercle */
-/* Badge de niveau de force */
 .security-visual {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: var(--spacing-md) 0;
 }
-
-/* Badge circulaire coloré — fort / moyen / faible */
 .security-strength-label {
     display: inline-flex;
     align-items: center;
@@ -738,20 +580,17 @@ body {
     border: 3px solid currentColor;
     font-size: 1.25rem;
     font-weight: var(--font-weight-bold);
-    color: #065F46; /* Emerald-800 : contraste WCAG AA (4.5:1) sur fond clair */
+    color: #065F46; 
     letter-spacing: 0.01em;
 }
-
 .security-info {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
 }
-
 .security-info strong {
     color: var(--color-text-primary);
     font-weight: var(--font-weight-semibold);
 }
-
 .security-disclaimer {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
@@ -759,8 +598,6 @@ body {
     line-height: 1.5;
     margin-top: var(--spacing-xs);
 }
-
-/* Bloc "Privacy by default" */
 .app-info {
     width: 100%;
     display: flex;
@@ -768,7 +605,6 @@ body {
     gap: var(--spacing-xl);
     margin-top: var(--spacing-lg);
 }
-
 .privacy-section {
     display: flex;
     flex-direction: column;
@@ -777,19 +613,13 @@ body {
     padding-top: var(--spacing-lg);
     border-top: 1px solid var(--color-border);
 }
-
-/* Grande icône bouclier de la section privacy */
 .privacy-icon {
     width: 48px;
     height: 48px;
 }
-
 [data-theme="dark"] .privacy-icon {
     filter: invert(1) brightness(1.8);
 }
-
-/* ===== CTA Proton Pass (security-card) ===== */
-/* Bouton pleine largeur sobre — second point de contact parrainage */
 .proton-cta {
     display: flex;
     flex-direction: column;
@@ -807,23 +637,17 @@ body {
     text-decoration: none;
     transition: all 0.2s ease;
 }
-
 .proton-cta:hover {
     border-color: var(--color-success);
     color: var(--color-success);
     background: transparent;
 }
-
-/* Tagline Proton dans le bouton CTA */
 .proton-cta-logo {
     height: auto;
     width: 220px;
     display: block;
     flex-shrink: 0;
 }
-
-/* ===== Bouton retour en haut ===== */
-/* Apparaît quand l'utilisateur a scrollé > 300px */
 .scroll-top {
     position: fixed;
     right: var(--spacing-lg);
@@ -846,29 +670,21 @@ body {
     transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, background-color 0.2s;
     z-index: 50;
 }
-
-/* Classe ajoutée par JS quand l'utilisateur scroll */
 .scroll-top.visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
-
 .scroll-top:hover {
     background: var(--color-success);
     border-color: var(--color-success);
     color: #fff;
 }
-
-/* ===== Responsive ===== */
-/* En dessous de 1200px : grille passe en colonne unique */
 @media (max-width: 1200px) {
     .container {
         grid-template-columns: 1fr;
     }
 }
-
-/* Mobile : réduire les paddings, masquer le tagline, empiler le footer */
 @media (max-width: 768px) {
     .site-header,
     .site-main,
@@ -876,28 +692,21 @@ body {
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
     }
-
     .header-tagline {
-        display: none; /* Trop long pour mobile */
+        display: none; 
     }
-
     .footer-inner {
         flex-direction: column;
         gap: var(--spacing-sm);
         text-align: center;
     }
-
     .card {
         padding: var(--spacing-lg);
     }
-
     .heading-primary {
         font-size: 24px;
     }
 }
-
-/* ===== Bouton toggle de thème ===== */
-/* Intégré dans le header (non fixe), avec icône lune/soleil animée */
 .theme-toggle {
     position: relative;
     width: 42px;
@@ -912,121 +721,79 @@ body {
     transition: all 0.2s ease;
     flex-shrink: 0;
 }
-
 .theme-toggle:hover {
     background: var(--color-bg-main);
-    transform: rotate(20deg); /* Petit effet de rotation au survol */
+    transform: rotate(20deg); 
 }
-
-/* Icônes positionnées en absolu l'une sur l'autre */
 .theme-icon {
     font-size: 24px;
     position: absolute;
     line-height: 1;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
-/* En thème clair : lune visible, soleil caché */
 .moon-icon {
     opacity: 1;
     transform: rotate(0deg);
 }
-
 .sun-icon {
     opacity: 0;
     transform: rotate(180deg);
 }
-
-/* En thème sombre : soleil visible, lune disparaît */
 [data-theme="dark"] .moon-icon {
     opacity: 0;
     transform: rotate(-180deg);
 }
-
-/* Couleur blanche pour les icônes sur fond sombre */
 [data-theme="dark"] .theme-icon {
     color: #F1F5F9;
 }
-
 [data-theme="dark"] .sun-icon {
     opacity: 1;
     transform: rotate(0deg);
 }
-
-/* ===== Corrections thème sombre ===== */
-/*
- * En dark mode, --color-primary vaut #E2E8F0 (très clair).
- * Les éléments avec fond --color-primary seraient quasi-blancs,
- * donc on surcharge explicitement avec les couleurs success/border adaptées.
- */
-
-/* Bouton "Générer à nouveau" : fond vert emerald en dark pour rester lisible */
 [data-theme="dark"] .btn-primary {
     background: var(--color-success);
-    color: #0F172A; /* Texte sombre sur fond vert */
+    color: #0F172A; 
 }
-
 [data-theme="dark"] .btn-primary:hover {
     background: #10B981;
 }
-
-/* Bouton "Copier" : bordure et couleur adaptées au thème sombre */
 [data-theme="dark"] .btn-icon {
     border-color: var(--color-border);
     color: var(--color-text-primary);
 }
-
 [data-theme="dark"] .btn-icon:hover {
     background: var(--color-success);
     border-color: var(--color-success);
     color: #0F172A;
 }
-
 [data-theme="dark"] .btn-icon:hover .icon {
     color: #0F172A;
 }
-
-/* Cases à cocher : accent vert en dark */
 [data-theme="dark"] .checkbox-item input[type="checkbox"]:checked + .checkbox-custom {
     background: var(--color-success);
     border-color: var(--color-success);
 }
-
-/* Texte du mot de passe : emerald en dark */
 [data-theme="dark"] .password-text {
     color: var(--color-success);
 }
-
 [data-theme="dark"] .checkbox-example {
     color: var(--color-warning);
 }
-
-/* Fond légèrement différencié pour la zone de mot de passe en dark */
 [data-theme="dark"] .password-display {
     background: var(--color-bg-main);
 }
-
-/* Fond différencié pour les lignes de suggestion en dark */
 [data-theme="dark"] .password-item {
     background: var(--color-bg-main);
 }
-
-/* Fond du curseur en dark */
 [data-theme="dark"] .slider {
     background: var(--color-border);
 }
-
-/* Arc de fond de la jauge SVG en dark */
-
-/* ===== Section Guide Sécurité ===== */
-/* Section informative en bas de page */
 .security-guide {
     max-width: 1400px;
     margin: var(--spacing-xl) auto;
     padding-top: var(--spacing-xl);
     border-top: 1px solid var(--color-border);
 }
-
 .guide-title {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
@@ -1034,15 +801,12 @@ body {
     margin-bottom: var(--spacing-xl);
     text-align: center;
 }
-
-/* Grille des 3 piliers (longueur / aléatoire / unicité) */
 .pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
 }
-
 .pillar-card {
     background: var(--color-bg-card);
     border-radius: var(--radius-lg);
@@ -1051,11 +815,9 @@ body {
     text-align: center;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .pillar-card:hover {
     box-shadow: var(--shadow-lg);
 }
-
 .pillar-icon {
     font-size: 36px;
     color: var(--color-primary);
@@ -1063,48 +825,39 @@ body {
     display: block;
     line-height: 1;
 }
-
 .pillar-card h3 {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-xs);
 }
-
 .pillar-card p {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.6;
 }
-
-/* Méthodes d'attaque */
 .attacks-section {
     margin-bottom: var(--spacing-xl);
 }
-
 .section-subtitle {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-md);
 }
-
-/* Grille 2 colonnes : brute force | dictionnaire */
 .attacks-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg);
 }
-
 .attack-card {
     background: var(--color-bg-card);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-md);
-    border-left: 4px solid var(--color-warning); /* Accentuation warning */
+    border-left: 4px solid var(--color-warning); 
     transition: background-color 0.3s ease;
 }
-
 .attack-header {
     display: flex;
     align-items: center;
@@ -1114,27 +867,21 @@ body {
     font-size: var(--font-size-md);
     color: var(--color-text-primary);
 }
-
 .attack-icon {
     font-size: 20px;
     color: var(--color-warning);
     line-height: 1;
 }
-
 .attack-card p {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.6;
 }
-
-/* Grille bas : bonnes pratiques + FAQ côte à côte */
 .guide-bottom-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
 }
-
-/* Section bonnes pratiques */
 .practices-section {
     background: var(--color-bg-card);
     border-radius: var(--radius-lg);
@@ -1142,7 +889,6 @@ body {
     box-shadow: var(--shadow-md);
     transition: background-color 0.3s ease;
 }
-
 .practices-list {
     list-style: none;
     display: flex;
@@ -1150,7 +896,6 @@ body {
     gap: var(--spacing-md);
     margin-top: var(--spacing-md);
 }
-
 .practice-item {
     display: flex;
     align-items: flex-start;
@@ -1159,28 +904,21 @@ body {
     color: var(--color-text-primary);
     line-height: 1.5;
 }
-
-/* Icône à gauche de chaque bonne pratique */
 .practice-icon {
     font-size: 20px;
     color: var(--color-success);
     flex-shrink: 0;
     line-height: 1.4;
 }
-
-/* ===== Carte recommandation Proton Pass ===== */
-/* Placée sous la liste des bonnes pratiques — lien de parrainage discret mais visible */
 .proton-rec {
     margin-top: var(--spacing-lg);
     padding: var(--spacing-md) var(--spacing-lg);
     border: 1px solid var(--color-border);
-    border-left: 3px solid var(--color-success); /* Accentuation emerald à gauche */
+    border-left: 3px solid var(--color-success); 
     border-radius: var(--radius-md);
     background: var(--color-bg-main);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-
-/* En-tête : icône + label "Gestionnaire recommandé" */
 .proton-rec-header {
     display: flex;
     align-items: center;
@@ -1188,7 +926,6 @@ body {
     gap: var(--spacing-xs);
     margin-bottom: var(--spacing-xs);
 }
-
 .proton-rec-logo {
     height: auto;
     width: 160px;
@@ -1196,14 +933,11 @@ body {
     flex-shrink: 0;
     margin-left: auto;
 }
-
 .proton-rec-icon {
     font-size: 15px;
     color: var(--color-success);
     line-height: 1;
 }
-
-/* Label discret en petites majuscules */
 .proton-rec-label {
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
@@ -1211,15 +945,12 @@ body {
     letter-spacing: 0.6px;
     color: var(--color-text-secondary);
 }
-
 .proton-rec-text {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.5;
     margin-bottom: var(--spacing-sm);
 }
-
-/* Lien CTA sobre */
 .proton-rec-link {
     display: flex;
     align-items: center;
@@ -1227,22 +958,18 @@ body {
     gap: 5px;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: #047857; /* Emerald-700 : contraste WCAG AA (4.5:1) */
+    color: #047857; 
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
-
 .proton-rec-link:hover {
     opacity: 0.8;
     text-decoration: underline;
 }
-
 .proton-rec-link .ti-arrow-right {
     font-size: 14px;
     line-height: 1;
 }
-
-/* FAQ accordéon */
 .faq-section {
     background: var(--color-bg-card);
     border-radius: var(--radius-lg);
@@ -1250,27 +977,21 @@ body {
     box-shadow: var(--shadow-md);
     transition: background-color 0.3s ease;
 }
-
 .faq-list {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
     margin-top: var(--spacing-md);
 }
-
 .faq-item {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     overflow: hidden;
     transition: border-color 0.2s ease;
 }
-
-/* Bordure active sur l'item FAQ ouvert */
 .faq-item.open {
     border-color: var(--color-primary);
 }
-
-/* Bouton question : flex entre le texte et le chevron */
 .faq-question {
     width: 100%;
     display: flex;
@@ -1288,12 +1009,9 @@ body {
     gap: var(--spacing-md);
     transition: background-color 0.2s ease;
 }
-
 .faq-question:hover {
     background: var(--color-bg-main);
 }
-
-/* Flèche accordéon : pivote à 180° quand l'item est ouvert */
 .faq-chevron {
     font-size: 18px;
     color: var(--color-text-secondary);
@@ -1301,46 +1019,34 @@ body {
     line-height: 1;
     transition: transform 0.3s ease;
 }
-
 .faq-item.open .faq-chevron {
     transform: rotate(180deg);
 }
-
-/* Réponse masquée par défaut, révélée via max-height */
 .faq-answer {
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease;
 }
-
 .faq-answer p {
     padding: 0 var(--spacing-lg) var(--spacing-md);
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.7;
 }
-
-/* Hauteur maximale atteinte quand l'item est ouvert */
 .faq-item.open .faq-answer {
     max-height: 200px;
 }
-
-/* Responsive guide sécurité */
 @media (max-width: 1200px) {
     .pillars-grid {
         grid-template-columns: 1fr;
     }
-
     .attacks-grid {
         grid-template-columns: 1fr;
     }
-
     .guide-bottom-grid {
         grid-template-columns: 1fr;
     }
 }
-
-/* ===== Toast Notifications ===== */
 .toast-container {
     position: fixed;
     bottom: var(--spacing-xl);
@@ -1387,24 +1093,17 @@ body {
 .toast-action:hover {
     background: var(--color-primary-hover);
 }
-
-
 .password-text {
     transition: opacity 0.15s ease;
 }
 .password-list {
     transition: opacity 0.15s ease;
 }
-
-
-/* Styles pour le lien actif dans le footer */
 .footer-link[aria-current="page"] {
     cursor: default;
     color: var(--color-text-secondary);
     pointer-events: none;
 }
-
-/* ===== Page de Confidentialité ===== */
 .privacy-content {
     max-width: 800px;
     margin: 0 auto;
