@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip show:*)",
+      "Bash(pyftsubset fonts/tabler-icons.woff2 --unicodes=\"U+EAF8,U+EB30,U+EA5E,U+EA7A,U+EA51,U+EB13,U+EED2,U+F000,U+EAE2,U+EF8E,U+EA39,U+EB62,U+EA8A,U+ECF0,U+ED58,U+EA99,U+EA5F,U+EC1C,U+EB22,U+EA25,U+EA19\" --flavor=woff2 --output-file=fonts/tabler-icons.subset.woff2)",
+      "Bash(python -c \":*)",
+      "Bash(rm d:/Developpement/genpass/fonts/tabler-icons.tmp.ttf)"
+    ]
+  }
+}

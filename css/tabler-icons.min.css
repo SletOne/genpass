@@ -1,5 +1,5 @@
 /* Tabler Icons subset - only icons used by GenPass */
-@font-face{font-family:"tabler-icons";font-style:normal;font-weight:400;src:url("../fonts/tabler-icons.woff2?v2.47.0") format("woff2"),url("../fonts/tabler-icons.woff?v2.47.0") format("woff"),url("../fonts/tabler-icons.ttf?v2.47.0") format("truetype")}
+@font-face{font-family:"tabler-icons";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/tabler-icons.subset.woff2") format("woff2")}
 .ti{font-family:"tabler-icons" !important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .ti-moon:before{content:"\eaf8"}
 .ti-sun:before{content:"\eb30"}

@@ -35,9 +35,17 @@
     <!-- Referrer Policy -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <!-- Preload fonts - Critical for LCP -->
-    <link rel="preload" href="fonts/PirulenRg.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="fonts/PirulenRg.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="css/tabler-icons.min.css" as="style">
-    <link rel="preload" href="fonts/tabler-icons.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/tabler-icons.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Modulepreload : tous les modules JS chargés en parallèle dès le parsing du head -->
+    <link rel="modulepreload" href="js/app.js">
+    <link rel="modulepreload" href="js/ui.js">
+    <link rel="modulepreload" href="js/utils.js">
+    <link rel="modulepreload" href="js/state.js">
+    <link rel="modulepreload" href="js/security.js">
+    <link rel="modulepreload" href="js/generator.js">
+    <link rel="modulepreload" href="js/data.js">
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -53,9 +61,11 @@
         "inLanguage": "fr"
     }
     </script>
-    <!-- Styles : Tabler Icons en local (pas de dépendance CDN externe) -->
+    <!-- Styles critiques (above-the-fold) : bloquants mais minuscules -->
     <link rel="stylesheet" href="css/tabler-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/critical.css">
+    <!-- Préchargement de style.css : téléchargé en parallèle, appliqué en bas de <body> -->
+    <link rel="preload" href="css/style.css" as="style">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="apple-touch-icon" href="assets/favicon.svg">
 </head>
@@ -487,6 +497,8 @@
         <i class="ti ti-arrow-up"></i>
     </button>
 
+    <!-- style.css : préchargé dans <head>, appliqué ici pour ne pas bloquer le premier rendu -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- app.js importe le reste des modules via ES modules -->
     <script type="module" src="js/app.js"></script>
 </body>
